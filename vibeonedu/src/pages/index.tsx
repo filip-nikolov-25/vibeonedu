@@ -1,20 +1,13 @@
-import Image from "next/image";
-
-// const geistSans = localFont({
-//   src: "./fonts/GeistVF.woff",
-//   variable: "--font-geist-sans",
-//   weight: "100 900",
-// });
-// const geistMono = localFont({
-//   src: "./fonts/GeistMonoVF.woff",
-//   variable: "--font-geist-mono",
-//   weight: "100 900",
-// });
+import BottomSection from "@/components/homepage/BottomSection";
+import HeroSection from "@/components/homepage/HeroSection";
+import MainSection from "@/components/homepage/MainSection";
 
 export default function Home() {
   return (
     <div>
-    
+      <HeroSection />
+      <MainSection />
+      <BottomSection />
     </div>
   );
 }
