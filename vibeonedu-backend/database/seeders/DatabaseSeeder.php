@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             BadgeSeeder::class,
             ModuleSeeder::class,
             CourseSeeder::class,
+            TopicSeeder::class,
 
         ]);
 
