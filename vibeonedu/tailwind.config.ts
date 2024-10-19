@@ -14,7 +14,9 @@ const config: Config = {
         customOrange: "#ff6130",
         customBlue:"#2870ED",
         customDarkGreen:"#028661",
-        customPurple:"#721c7a"
+        customGreen:"#0cb43f",
+        customPurple:"#721c7a",
+        customPink :"#eb4c79"
       },
     },
   },

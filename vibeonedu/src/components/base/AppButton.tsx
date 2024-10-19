@@ -1,7 +1,7 @@
 import React from "react";
 
 interface Props {
-  padding?: string;
+  padding: string;
   width?: string;
   color?: string;
   borderRadius?: string;
