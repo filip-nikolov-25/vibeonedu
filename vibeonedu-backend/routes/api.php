@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\FunFactController;
+use App\Http\Controllers\ModuleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,7 +16,7 @@ use App\Models\User;
 
 Route::get('/badges/{id}', [BadgeController::class, 'show']);
 Route::get('/userBadges/{id}', [UserBadgeController::class, 'index']);
-Route::get('/registrations/count', [UserController::class, 'index']);
+Route::get('/registrations/count', [UserController::class, 'userCount']);
 
 
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
@@ -27,5 +29,14 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 
+Route::get('/modules', [ModuleController::class, 'index']);
+
 Route::get('/funfacts', [FunfactController::class, 'index']);
 
+
+//Courses APIS
+Route::get('/individualcourses', [CourseController::class, 'individualCourses']);
+Route::get('/businesscourses', [CourseController::class, 'businessCourses']);
+
+Route::get('/getuser/{id}', [\App\Http\Controllers\UserController::class, 'show']);
+//Route::post()

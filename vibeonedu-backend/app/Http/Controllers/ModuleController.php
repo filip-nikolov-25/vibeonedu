@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Modules;
+use App\Models\Module;
 use App\Http\Requests\StoreModulesRequest;
 use App\Http\Requests\UpdateModulesRequest;
 
-class ModulesController extends Controller
+class ModuleController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return response()->json(Module::all());
     }
 
     /**
@@ -35,7 +36,7 @@ class ModulesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Modules $modules)
+    public function show(Module $modules)
     {
         //
     }
@@ -43,7 +44,7 @@ class ModulesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Modules $modules)
+    public function edit(Module $modules)
     {
         //
     }
@@ -51,7 +52,7 @@ class ModulesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateModulesRequest $request, Modules $modules)
+    public function update(UpdateModulesRequest $request, Module $modules)
     {
         //
     }
@@ -59,7 +60,7 @@ class ModulesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Modules $modules)
+    public function destroy(Module $modules)
     {
         //
     }

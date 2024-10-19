@@ -8,15 +8,28 @@ use App\Http\Requests\UpdateCourseRequest;
 
 class CourseController extends Controller
 {
+
+    public function businessCourses() {
+        $businessCourses = Course::where('module_id', 2)->get();
+
+        return response()->json($businessCourses);
+    }
+
+    public function individualCourses() {
+        $individualCourses = Course::where('module_id', 1)->get();
+
+        return response()->json($individualCourses);
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $courses = Course::with('module')->get();
+        return response()->json(Course::all());
 
-        return response()->json($courses);
     }
+
 
     /**
      * Show the form for creating a new resource.
