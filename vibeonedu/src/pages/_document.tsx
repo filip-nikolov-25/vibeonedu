@@ -1,3 +1,4 @@
+
 import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
@@ -10,8 +11,12 @@ export default function Document() {
           async
         ></script>
       </Head>
-      <body className="antialiased">
-        <Main />
+      <body className="antialiased min-h-screen">
+        <main className="mt-[-120px]">
+          {" "}
+          {/* Adjust this margin-top as needed */}
+          <Main />
+        </main>
         <NextScript />
       </body>
     </Html>
