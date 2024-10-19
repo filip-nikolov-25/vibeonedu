@@ -13,6 +13,6 @@ class UserTopicSeeder extends Seeder
      */
     public function run(): void
     {
-        UserTopic::factory()->create();
+        UserTopic::factory(30)->create();
     }
 }
