@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Module;
+use App\Models\Modules;
 
 class ModulesSeeder extends Seeder
 {
@@ -13,6 +13,6 @@ class ModulesSeeder extends Seeder
      */
     public function run(): void
     {
-        Module::factory(20)->create();
+        Modules::factory(20)->create();
     }
 }
