@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\User_badge;
+use App\Models\UserBadge;
 
 
 class UserBadgeSeeder extends Seeder
@@ -15,7 +15,7 @@ class UserBadgeSeeder extends Seeder
     public function run(): void
     {
 
-        User_badge::factory()->count(10)->create();
+        UserBadge::factory()->count(20)->create();
 
     }
 
