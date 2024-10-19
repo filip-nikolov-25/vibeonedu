@@ -26,6 +26,7 @@ class UserFactory extends Factory
         return [
             'role_id' => 1,
             'name' => fake()->name(),
+            'password' => bcrypt('password'),
             'surname' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'last_login_at' => now(),
