@@ -24,8 +24,10 @@ class DatabaseSeeder extends Seeder
             CourseSeeder::class,
             TopicSeeder::class,
             UserTopicSeeder::class,
+            UserCourseSeeder::class,
             UserBadgeSeeder::class,
             UserEvaluationSeeder::class,
+
 
         ]);
 
