@@ -7,8 +7,8 @@ import NavBar from "@/components/NavBar";
 
 export default function Home() {
   return (
-    <div>
-              <NavBar />
+    <div className="mt-[-120px]">
+      <NavBar />
       <HeroSection />
       <MainSection />
       <BottomSection />

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import AppButton from "../base/AppButton";
+import AppButton from "../base/AppButton/AppButton";
 
 const HeroSection = () => {
   return (
@@ -38,10 +38,10 @@ const HeroSection = () => {
             Прва и единствена платформа за финансиска едукација на млади на
             Sparkasse Bank.
           </p>
-          
 
-          <AppButton padding="10px" margin={"2.5rem 0 0 0 "}>Започни сега</AppButton>
-         
+          <AppButton padding="10px" margin={"2.5rem 0 0 0 "}>
+            Започни сега
+          </AppButton>
         </div>
       </div>
       <div className="w-1/2  h-[100vh] bg-teal-500"></div>
