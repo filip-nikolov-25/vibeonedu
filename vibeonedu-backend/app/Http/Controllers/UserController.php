@@ -2,21 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\user_badge;
-use App\Http\Requests\Storeuser_badgeRequest;
-use App\Http\Requests\Updateuser_badgeRequest;
+use Illuminate\Http\Request;
 use App\Models\User;
 
-class UserBadgeController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index($id)
+    public function index()
     {
-        $user = User::find($id);
-        $badges = $user->badges;
-        return response()->json($badges);
+        $registrations = User::count();
+        return response()->json(["registrations" => $registrations]);
     }
 
     /**
@@ -30,7 +27,7 @@ class UserBadgeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Storeuser_badgeRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -38,7 +35,7 @@ class UserBadgeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(user_badge $user_badge)
+    public function show(string $id)
     {
         //
     }
@@ -46,7 +43,7 @@ class UserBadgeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(user_badge $user_badge)
+    public function edit(string $id)
     {
         //
     }
@@ -54,7 +51,7 @@ class UserBadgeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Updateuser_badgeRequest $request, user_badge $user_badge)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -62,7 +59,7 @@ class UserBadgeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(user_badge $user_badge)
+    public function destroy(string $id)
     {
         //
     }

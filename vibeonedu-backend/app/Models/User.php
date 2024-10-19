@@ -49,9 +49,16 @@ class User extends Authenticatable
         ];
     }
 
+
+    public function badges ()
+    {
+        return $this->belongsToMany(Badge::class, 'user_badges');
+    }
+  
     public function courses()
     {
         return $this->belongsToMany(Course::class, 'user_courses')
                     ->withPivot('started_at', 'completed_at');
+
     }
 }
