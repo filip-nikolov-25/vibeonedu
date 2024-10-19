@@ -12,7 +12,7 @@ export default function Document() {
         ></script>
       </Head>
       <body className="antialiased min-h-screen">
-        <main className="mt-[-120px]">
+        <main className="">
           {" "}
           {/* Adjust this margin-top as needed */}
           <Main />

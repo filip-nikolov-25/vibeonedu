@@ -2,3 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+audio::-webkit-media-controls-enclosure {
+    border-radius: 0;
+    background-color: #E4EAF0;
+}
+

@@ -16,8 +16,11 @@ const config: Config = {
         customDarkGreen:"#028661",
         customGreen:"#0cb43f",
         customPurple:"#721c7a",
-        customPink :"#eb4c79"
+        customPink :"#eb4c79",
       },
+      borderWidth: {
+        3: "3px",
+      }
     },
   },
   plugins: [],
