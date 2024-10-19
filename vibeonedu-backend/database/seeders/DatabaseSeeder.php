@@ -32,7 +32,8 @@ class DatabaseSeeder extends Seeder
             UserBadgeSeeder::class,
             UserEvaluationSeeder::class,
             LectureSeeder::class,
-            // UserLectureSeeder::class,
+            UserLectureSeeder::class,
+            UserInfoSeeder::class,
 
         ]);
 

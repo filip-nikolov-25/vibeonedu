@@ -13,6 +13,6 @@ class UserInfoSeeder extends Seeder
      */
     public function run(): void
     {
-        UserInfo::factory()->create();
+        UserInfo::factory(10)->create();
     }
 }

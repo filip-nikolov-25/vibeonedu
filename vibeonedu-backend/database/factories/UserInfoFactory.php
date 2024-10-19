@@ -27,7 +27,7 @@ class UserInfoFactory extends Factory
             'phone' => $this->faker->phoneNumber,
             'gender' => $this->faker->randomElement(['male', 'female']),
             'birth_date' => $this->faker->date('Y-m-d'),
-            'image_path' => $this->faker->imageUrl([
+            'img_path' => $this->faker->imageUrl([
                 'https://picsum.photos/300/300',
             ]),
             'study_time' => $this->faker->randomElement(['10-20 минути', '30 минути', '45 минути', '1 час']),
