@@ -9,19 +9,21 @@ import React from "react";
 
 const Coursedetails = () => {
   return (
-    <div className="">
-        <NavBar />
+    <div className="mt-[-120px]">
+      <NavBar />
       <HeroSection />
       <div className="mt-20 mb-20">
-
-      <CourseOverview />
+        <CourseOverview />
       </div>
       <PinkSection />
       <div className="mt-20 mb-20">
-
-      <SecondCourseOverviewSection />
+        <SecondCourseOverviewSection />
       </div>
-      <StartYourCourseOrangeSection bgColor="#ff6130" showPicture={false} buttonColor="#2870ed"/>
+      <StartYourCourseOrangeSection
+        bgColor="#ff6130"
+        showPicture={false}
+        buttonColor="#2870ed"
+      />
       <Footer />
     </div>
   );

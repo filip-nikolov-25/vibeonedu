@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import AppButton from "./AppButton";
+import AppButton from "./AppButton/AppButton";
 
 interface Props {
   bgColor: string;

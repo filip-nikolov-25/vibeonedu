@@ -1,21 +1,21 @@
 import React from "react";
-import AppButton from "./AppButton";
+import AppButton from "./AppButton/AppButton";
 
 interface Props {
   marginRight: boolean;
-  color:string;
-  title:string
+  color: string;
+  title: string;
 }
 
-const CourseOverviewCard = ({ marginRight,color,title }: Props) => {
+const CourseOverviewCard = ({ marginRight, color, title }: Props) => {
   return (
     <div
       className={`border-2 border-customDarkGreen w-[33.333%] ${
         marginRight && "mr-5"
       } p-5 rounded-xl`}
     >
-      <p className="text-xl font-bold mb-5" style={{color:color}}>
-       {title}
+      <p className="text-xl font-bold mb-5" style={{ color: color }}>
+        {title}
       </p>
       <p>
         Научи ги основите на управувањето со пари – буџетирање, штедење и
@@ -23,11 +23,17 @@ const CourseOverviewCard = ({ marginRight,color,title }: Props) => {
       </p>
 
       <div className="flex mt-16">
-        <i className="fa-solid fa-book-open text-xl mr-3"style={{color:color}} ></i>
+        <i
+          className="fa-solid fa-book-open text-xl mr-3"
+          style={{ color: color }}
+        ></i>
         <p>Вкупно лекции : 6</p>
       </div>
       <div className="flex">
-        <i className="fa-regular fa-clock text-xl mr-3"style={{color:color}}></i>
+        <i
+          className="fa-regular fa-clock text-xl mr-3"
+          style={{ color: color }}
+        ></i>
 
         <p>Просечно време на читање: 3ч35мин</p>
       </div>

@@ -1,15 +1,6 @@
 import React from "react";
+import { ButtonProps } from "./AppButtonTypes";
 
-interface Props {
-  padding: string;
-  width?: string;
-  color?: string;
-  borderRadius?: string;
-  backgroundColor?: string;
-  onClick?: () => void;
-  children: React.ReactNode;
-  margin: string;
-}
 
 const AppButton = ({
   width = "auto",
@@ -20,7 +11,7 @@ const AppButton = ({
   backgroundColor = "#2870ED",
   onClick,
   children,
-}: Props) => {
+}: ButtonProps) => {
   return (
     <button
       style={{ width, padding, color, backgroundColor, margin, borderRadius }}

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import AppButton from "./base/AppButton";
+import AppButton from "./base/AppButton/AppButton";
 import Link from "next/link";
 
 const NavBar = () => {
