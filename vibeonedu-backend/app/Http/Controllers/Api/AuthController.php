@@ -16,7 +16,7 @@ class AuthController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
-            'surname' => 'required|string|max:255', // Add surname validation
+            'surname' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
         ]);
@@ -27,13 +27,17 @@ class AuthController extends Controller
 
         $user = User::create([
             'name' => $request->name,
-            'surname' => $request->surname, // Save surname
+            'surname' => $request->surname,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
 
+        // Create a Sanctum token for the newly registered user
+        $token = $user->createToken('YourAppName')->plainTextToken;
+
         return response()->json([
-            'user' => $user
+            'user' => $user,
+            'token' => $token // Return the token
         ], 201);
     }
 
@@ -50,8 +54,22 @@ class AuthController extends Controller
         $user->last_login_at = Carbon::now(); // Set the last login timestamp
         $user->save();
 
+        // Use the existing token if available
+        $token = $user->createToken('YourAppName')->plainTextToken;
+
+        // Check if the user has any courses
+        $courses = $user->courses;
+
+        // Check if any course has completed_at as null (indicating it is active)
+        $activeCourse = $courses->firstWhere('pivot.completed_at', null);
+
+        // Set the active_courses variable based on whether an active course is found
+        $activeCourses = $activeCourse ? true : false;
+
         return response()->json([
             'user' => $user,
+            'active_courses' => $activeCourses, // Boolean indicating if the user has active courses
+            'token' => $token // Return the token
         ]);
     }
 
@@ -60,9 +78,9 @@ class AuthController extends Controller
         return response()->json(Auth::user());
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
-        Auth::logout();
+        $request->user()->currentAccessToken()->delete();
 
         return response()->json(['message' => 'Successfully logged out']);
     }

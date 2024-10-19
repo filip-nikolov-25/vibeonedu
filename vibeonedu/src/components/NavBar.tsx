@@ -23,7 +23,7 @@ const NavBar = () => {
             padding="6px 20px"
             backgroundColor="#ff6130"
           >
-            Регитрација
+            Регистрација
           </AppButton>
           <AppButton
             margin="0 1rem 0 0 "
