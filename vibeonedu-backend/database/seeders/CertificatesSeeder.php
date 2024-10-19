@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Certificate;
+use App\Models\User;
+use App\Models\Course;
 use Illuminate\Database\Seeder;
 
 class CertificatesSeeder extends Seeder
@@ -12,6 +14,17 @@ class CertificatesSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        $users = User::all();
+        $courses = Course::all();
+
+        foreach ($users as $user) {
+            foreach ($courses->random(3) as $course) {
+                Certificate::create([ 
+                    'user_id' => $user->id,
+                    'course_id' => $course->id,
+                    'image_path' => 'certificates/sample_certificate_' . $user->id . '_' . $course->id . '.jpg',
+                ]);
+            }
+        }
     }
 }

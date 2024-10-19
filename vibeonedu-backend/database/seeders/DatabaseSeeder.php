@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        
         $this->call([
             CitySeeder::class,
             FunFactSeeder::class,
@@ -24,6 +25,7 @@ class DatabaseSeeder extends Seeder
             CourseSeeder::class,
             TopicSeeder::class,
             UserTopicSeeder::class,
+            CertificatesSeeder::class,
             UserCourseSeeder::class,
             UserBadgeSeeder::class,
             UserEvaluationSeeder::class,
