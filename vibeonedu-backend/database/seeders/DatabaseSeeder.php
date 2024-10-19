@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             ModuleSeeder::class,
             CourseSeeder::class,
             TopicSeeder::class,
+            UserTopicSeeder::class,
 
 
         ]);
