@@ -13,7 +13,9 @@ class CourseController extends Controller
      */
     public function index()
     {
-        //
+        $courses = Course::with('module')->get();
+
+        return response()->json($courses);
     }
 
     /**
@@ -37,7 +39,9 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        //
+        {
+            return response()->json($course->load('module'));
+        }
     }
 
     /**
