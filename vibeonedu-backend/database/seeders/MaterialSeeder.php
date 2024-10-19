@@ -12,6 +12,6 @@ class MaterialSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        
     }
 }
