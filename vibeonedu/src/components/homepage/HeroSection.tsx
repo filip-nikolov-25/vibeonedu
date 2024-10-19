@@ -4,7 +4,7 @@ import AppButton from "../base/AppButton";
 
 const HeroSection = () => {
   return (
-    <div className="flex relative">
+    <div className="flex relative just">
       <div className="absolute top-0">
         <Image
           src={"/images/homepageImgs/wVectorTopLeft.svg"}

@@ -35,9 +35,16 @@ class BadgeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Badge $badge)
+    public function show(Badge $badge, $id)
     {
-        //
+        
+         $badge = Badge::find($id);
+
+         if (!$badge) {
+             return response()->json(['error' => 'Badge not found'], 404);
+         }
+ 
+         return response()->json($badge);
     }
 
     /**
