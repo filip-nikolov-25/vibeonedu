@@ -11,7 +11,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-// Add a foreign key referencing the roles table
+            // Add a foreign key referencing the roles table
             $table->foreignId('role_id')->constrained()->onDelete('cascade');
         });
     }

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Badge;
-use App\Http\Requests\StoreBadgeRequest;
-use App\Http\Requests\UpdateBadgeRequest;
+use App\Http\Requests\StoreUserCourseRequest;
+use App\Http\Requests\UpdateUserCourseRequest;
+use App\Models\UserCourse;
 
-class BadgeController extends Controller
+class UserCourseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class BadgeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreBadgeRequest $request)
+    public function store(StoreUserCourseRequest $request)
     {
         //
     }
@@ -35,22 +35,15 @@ class BadgeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Badge $badge, $id)
+    public function show(UserCourse $userCourse)
     {
-        
-         $badge = Badge::find($id);
-
-         if (!$badge) {
-             return response()->json(['error' => 'Badge not found'], 404);
-         }
- 
-         return response()->json($badge);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Badge $badge)
+    public function edit(UserCourse $userCourse)
     {
         //
     }
@@ -58,7 +51,7 @@ class BadgeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateBadgeRequest $request, Badge $badge)
+    public function update(UpdateUserCourseRequest $request, UserCourse $userCourse)
     {
         //
     }
@@ -66,7 +59,7 @@ class BadgeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Badge $badge)
+    public function destroy(UserCourse $userCourse)
     {
         //
     }
