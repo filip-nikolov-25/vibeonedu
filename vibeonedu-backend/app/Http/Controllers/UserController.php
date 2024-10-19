@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Carbon\Carbon;
 
 class UserController extends Controller
 {
@@ -13,6 +14,14 @@ class UserController extends Controller
     public function index()
     {
         $registrations = User::count();
+        return response()->json(["registrations" => $registrations]);
+    }
+
+    public function registeredToday()
+    {
+        $lastDay = Carbon::now()->subDay();
+
+        $registrations = User::where('last_login_at', '>=', $lastDay)->count();
         return response()->json(["registrations" => $registrations]);
     }
 
