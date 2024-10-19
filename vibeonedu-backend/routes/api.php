@@ -5,21 +5,34 @@ use App\Http\Controllers\FunFactController;
 use App\Http\Controllers\ModuleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\CourseController;
+
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\BadgeController;
+use App\Http\Controllers\UserBadgeController;
+use App\Http\Controllers\UserController;
+use App\Models\User;
 
 Route::get('/badges/{id}', [BadgeController::class, 'show']);
+Route::get('/userBadges/{id}', [UserBadgeController::class, 'index']);
+Route::get('/registrations/count', [UserController::class, 'userCount']);
+
 
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
+Route::get('/courses', [CourseController::class, 'index']);  // Show all courses
+Route::get('/courses/{course}', [CourseController::class, 'show']);  // Show a specific course by ID
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
-Route::get('/funfacts', [FunfactController::class, 'index']);
+Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 
 Route::get('/modules', [ModuleController::class, 'index']);
+
+Route::get('/funfacts', [FunfactController::class, 'index']);
+
 
 //Courses APIS
 Route::get('/individualcourses', [CourseController::class, 'individualCourses']);

@@ -27,6 +27,7 @@ class CourseController extends Controller
     public function index()
     {
         return response()->json(Course::all());
+
     }
 
 
@@ -51,7 +52,9 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        //
+        {
+            return response()->json($course->load('module'));
+        }
     }
 
     /**

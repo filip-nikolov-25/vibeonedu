@@ -5,15 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\user_badge;
 use App\Http\Requests\Storeuser_badgeRequest;
 use App\Http\Requests\Updateuser_badgeRequest;
+use App\Models\User;
 
 class UserBadgeController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($id)
     {
-        //
+        $user = User::find($id);
+        $badges = $user->badges;
+        return response()->json($badges);
     }
 
     /**

@@ -23,7 +23,6 @@ class UserController extends Controller
             'city' => $user->city,
         ];
 
-//        $userDetails = []
 
         return response()->json($userDetails, 200);
     }
@@ -64,4 +63,13 @@ class UserController extends Controller
 
         return response()->json(['message' => 'User updated successfully', 'user' => $user]);
     }
+
+    public function userCount()
+    {
+        $registrations = User::count();
+        return response()->json(["registrations" => $registrations]);
+    }
+
+
+   
 }
