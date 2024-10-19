@@ -21,8 +21,8 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/courses', [CourseController::class, 'index']);  // Show all courses
-Route::get('/courses/{course}', [CourseController::class, 'show']);  // Show a specific course by ID
+Route::get('/courses', [CourseController::class, 'index']);  
+Route::get('/courses/{course}', [CourseController::class, 'show']);  
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
@@ -38,3 +38,5 @@ Route::get('/businesscourses', [CourseController::class, 'businessCourses']);
 
 Route::get('/getuser/{id}', [\App\Http\Controllers\UserController::class, 'show']);
 //Route::post()
+
+Route::middleware('auth:sanctum')->get('/course/{courseId}/progress', [CourseController::class, 'courseProgress']);
