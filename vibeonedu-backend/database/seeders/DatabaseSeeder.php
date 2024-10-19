@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\UserEvaluation;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -24,6 +25,9 @@ class DatabaseSeeder extends Seeder
             TopicSeeder::class,
             UserTopicSeeder::class,
             UserCourseSeeder::class,
+            UserBadgeSeeder::class,
+            UserEvaluationSeeder::class,
+
 
         ]);
 
