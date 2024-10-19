@@ -19,8 +19,13 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             BadgeSeeder::class,
             ModuleSeeder::class,
+            CitySeeder::class,
+            UserInfoSeeder::class,
             CourseSeeder::class,
-
+            UserCourseSeeder::class,
+            LectureSeeder::class,
+            UserBadgeSeeder::class,
+            UserLectureSeeder::class
         ]);
 
         User::factory()->create([
