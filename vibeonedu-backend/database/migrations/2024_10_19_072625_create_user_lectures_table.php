@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(User::class)->constrained();
             $table->foreignIdFor(Lecture::class)->constrained();
+            $table->datetime('started_at');
+            $table->datetime('completed_at');
             $table->timestamps();
         });
     }

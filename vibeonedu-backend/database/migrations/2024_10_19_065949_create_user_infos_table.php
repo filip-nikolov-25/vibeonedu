@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('phone');
             $table->char('gender');
             $table->datetime('birth_date');
-            $table->url('img_path');
+            $table->string('img_path');
             $table->string('study_time');
             $table->timestamps();
         });
