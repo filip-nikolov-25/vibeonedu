@@ -12,9 +12,8 @@ class ModuleSeeder extends Seeder
      */
     public function run(): void
     {
-        Module::create(['name' => 'Programming Basics', 'description' => 'Introductory programming module.']);
-        Module::create(['name' => 'Web Development', 'description' => 'Web Development using modern frameworks.']);
-        Module::create(['name' => 'Database Design', 'description' => 'Database Design module.']);
+        Module::create(['name' => 'Научи за себе', 'description' => 'Introductory programming module.']);
+        Module::create(['name' => 'Научи за својот бизнис', 'description' => 'Web Development using modern frameworks.']);
 
     }
 }

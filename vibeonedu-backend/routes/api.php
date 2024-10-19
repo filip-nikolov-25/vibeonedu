@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\FunFactController;
+use App\Http\Controllers\ModuleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
@@ -17,4 +19,11 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/funfacts', [FunfactController::class, 'index']);
 
+Route::get('/modules', [ModuleController::class, 'index']);
 
+//Courses APIS
+Route::get('/individualcourses', [CourseController::class, 'individualCourses']);
+Route::get('/businesscourses', [CourseController::class, 'businessCourses']);
+
+Route::get('/getuser/{id}', [\App\Http\Controllers\UserController::class, 'show']);
+//Route::post()
