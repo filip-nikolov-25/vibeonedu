@@ -6,8 +6,6 @@ use App\Http\Controllers\ModuleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\CourseController;
-
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\BadgeController;
 use App\Http\Controllers\UserBadgeController;
