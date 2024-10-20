@@ -13,7 +13,7 @@ const SignIn = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const apiUrl = "https://98e3-31-11-74-166.ngrok-free.app/api/login"
+    const apiUrl = "https://98e3-31-11-74-166.ngrok-free.app/api/login";
 
     if (!email || !password) {
       setError("Please fill out all fields");
@@ -64,8 +64,12 @@ const SignIn = () => {
           className="mb-20"
         />
         <div className="text-white w-full">
-          <h1 className="text-3xl font-semibold mb-5">Учи денес, добивај утре!</h1>
-          <p className="text-xl mb-10">Продолжи <span className="font-bold">да вајбаш!</span></p>
+          <h1 className="text-3xl font-semibold mb-5">
+            Учи денес, добивај утре!
+          </h1>
+          <p className="text-xl mb-10">
+            Продолжи <span className="font-bold">да вајбаш!</span>
+          </p>
         </div>
         <form className="w-full mb-16" onSubmit={handleSubmit}>
           <div className="mb-3">
@@ -93,13 +97,15 @@ const SignIn = () => {
             />
           </div>
           {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
-          <button
-            type="submit"
-            className="bg-customOrange text-white font-bold w-full rounded-lg py-3"
-            disabled={loading} // Disable button while loading
-          >
-            {loading ? "Најавувањето..." : "Најави се"}
-          </button>
+          <Link href={"/dashboard"}>
+            <button
+              type="submit"
+              className="bg-customOrange text-white font-bold w-full rounded-lg py-3"
+              disabled={loading} // Disable button while loading
+            >
+              {loading ? "Најавување..." : "Најави се"}
+            </button>
+          </Link>
         </form>
         <p className="mb-5 text-xl">Или</p>
         <div className="flex flex-row mb-5">
@@ -130,6 +136,3 @@ const SignIn = () => {
 };
 
 export default SignIn;
-
-
-
