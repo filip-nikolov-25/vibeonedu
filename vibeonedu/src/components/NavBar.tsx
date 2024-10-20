@@ -11,27 +11,39 @@ const NavBar = () => {
           <Image src="/images/logo.png" width={63} height={100} alt="logo" />
         </Link>
         <ul className="flex list-none">
-          <li className="mr-7">Почетна</li>
-          <li className="mr-7">Курсеви</li>
-          <li className="mr-7">VibeOn Edu</li>
-          <li className="mr-7">Шпаркасе Банка</li>
+          <Link href={"/"}>
+            <li className="mr-7">Почетна</li>
+          </Link>
+          <Link href={"/allcourses"}>
+            <li className="mr-7">Курсеви</li>
+          </Link>
+          <Link href={"/"}>
+            <li className="mr-7">VibeOn Edu</li>
+          </Link>
+          <Link href={"https://sparkasse.mk/"}>
+            <li className="mr-7">Шпаркасе Банка</li>
+          </Link>
           <li>Контакт</li>
         </ul>
         <div>
+          <Link href={"/registration"}>
+            <AppButton
+              margin="0 1rem 0 0 "
+              padding="6px 20px"
+              backgroundColor="#ff6130"
+            >
+              Регистрација
+            </AppButton>
+          </Link>
+          <Link href={"/signin"}>
           <AppButton
             margin="0 1rem 0 0 "
             padding="6px 20px"
             backgroundColor="#ff6130"
-          >
-            Регистрација
-          </AppButton>
-          <AppButton
-            margin="0 1rem 0 0 "
-            padding="6px 20px"
-            backgroundColor="#ff6130"
-          >
+            >
             Најави се
           </AppButton>
+            </Link>
         </div>
       </div>
     </div>

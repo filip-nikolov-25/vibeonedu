@@ -1,8 +1,9 @@
+import Link from "next/link";
 import React from "react";
 
 const FinishYourCourse = () => {
   return (
-    <div className="bg-white mt-10 p-5 rounded-xl">
+    <div className="bg-white flex flex-col  mt-10 p-5 rounded-xl">
       <div className="flex mb-5">
         <i className="fa-solid fa-circle-check text-2xl mr-3 text-gray-500"></i>
         <p className="text-xl font-bold">Лична Финансиска Гимнастика</p>
@@ -32,9 +33,11 @@ const FinishYourCourse = () => {
           <p>Просечно време на читање: 3ч35мин</p>
         </div>
       </div>
+      <Link href={"/courseoverview"}>
       <button className="pt-2  pb-2 pl-5 pr-5 rounded-md text-white mt-5 bg-customGreen">
         Продолжи курс
       </button>
+      </Link>
     </div>
   );
 };

@@ -1,4 +1,5 @@
 
+import Footer from "@/components/Footer";
 import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
@@ -16,6 +17,7 @@ export default function Document() {
           {" "}
           {/* Adjust this margin-top as needed */}
           <Main />
+          <Footer />
         </main>
         <NextScript />
       </body>

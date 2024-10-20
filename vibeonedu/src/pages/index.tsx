@@ -34,7 +34,6 @@ const Home: React.FC = () => {
       <div className="pt-20 pb-20 w-[80%] mx-auto">
         <Carousel />
       </div>
-      <Footer />
     </div>
   );
 };

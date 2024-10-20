@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export const CourseInfo = () => {
      return (
-          <div className="w-1/4 flex-col h-fit">
+          <div className="w-1/4 ml-7 flex-col h-fit">
                <div className="w-full h-fit bg-customBlue text-white rounded-2xl px-7 py-7 text-lg fitContent">
                     <div className="flex text-xl">
                          <span className="flex me-5">

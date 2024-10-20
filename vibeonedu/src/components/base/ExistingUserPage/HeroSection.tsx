@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 import AppButton from "../AppButton/AppButton";
 import FinishYourCourse from "./FinishYourCourse";
+import Link from "next/link";
 
 const HeroSection = () => {
   return (
@@ -34,9 +35,11 @@ const HeroSection = () => {
           <FinishYourCourse />
         </div>
         <div className="text-center mt-5">
+          <Link href={"/allcourses"}>
           <AppButton padding="10px 20px" backgroundColor="#ff6130">
             Разгледај повеќе
           </AppButton>
+          </Link>
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import AppButton from "./AppButton/AppButton";
+import Link from "next/link";
 
 // interfaces in new file
 interface Props {
@@ -50,13 +51,15 @@ const StartYourCourseOrangeSection = ({
       <p className="text-white text-5xl font-bold">
         Земи го твоето место меѓу овие 10%!
       </p>
-      <AppButton
-        margin="2.5rem 0 0 0 "
-        padding="10px 20px"
-        backgroundColor={buttonColor}
-      >
-        Започни сега
-      </AppButton>
+      <Link href={"/registration"}>
+        <AppButton
+          margin="2.5rem 0 0 0 "
+          padding="10px 20px"
+          backgroundColor={buttonColor}
+        >
+          Започни сега
+        </AppButton>
+      </Link>
     </div>
   );
 };
