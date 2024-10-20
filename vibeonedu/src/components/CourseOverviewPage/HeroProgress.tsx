@@ -48,10 +48,10 @@ export const HeroProgress = () => {
                          </span>
                     </p>
                </div>
-               <div className="ml-2 mt-5">
+               <div className="ml-2 mt-5 w-3/4">
                     <Slider />
                </div>
-               <div className="my-5">
+               <div className="my-10">
                     <button className="rounded-md border-2 border-customGreen py-2 px-8 mr-3">
                          Продолжи со учење
                     </button>
