@@ -84,4 +84,15 @@ class AuthController extends Controller
 
         return response()->json(['message' => 'Successfully logged out']);
     }
+
+    public function checkUser(Request $request, $email)
+    {
+        $user = User::where('email', $email)->exists();
+
+        if ($user) {
+            return response()->json(['message' => 'User exists']);
+        } else {
+            return response()->json(['message' => 'User does not exist'], 404);
+        }
+    }
 }
