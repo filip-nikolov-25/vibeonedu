@@ -12,6 +12,7 @@ const CourseStatusCard = ({mainText,number,color}:Props) => {
   <p className="text-lg mb-7" style={{ color: color }}>{mainText}</p>
   <div className="font-bold border-l-4 pl-[80%] text-5xl" style={{ color: color, borderColor: color, marginTop: 'auto' }}>
     {number}
+    {/* KURSEVI VO TEK ITN BROJKA */}
   </div>
 </div>
 

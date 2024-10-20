@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react"; 
 import CourseCard from "../base/CourseCard";
 import AppButton from "../base/AppButton/AppButton";
 
@@ -9,8 +9,7 @@ const HeroSection = () => {
       title: "Лична финансиска гимнастика",
       allLectures: "Вкупно лекции: 6",
       remainingLectures: "Преостанати лекции: 0",
-      averageLearningTime:"Просечно време на читање ;3ч35мин",
-      id: 1
+      id: 1,
     },
     {
       title: "Лична финансиска гимнастика",
@@ -25,6 +24,19 @@ const HeroSection = () => {
       id: 3,
     },
   ];
+
+  const [showPopUp, setShowPopUp] = useState(false); // State for controlling pop-up visibility
+  const [selectedCourseTitle, setSelectedCourseTitle] = useState(""); // State for the selected course title
+
+  const openPopUp = (courseTitle: string) => {
+    setSelectedCourseTitle(courseTitle); // Set the selected course title
+    setShowPopUp(true);
+  };
+
+  const closePopUp = () => {
+    setShowPopUp(false);
+  };
+
   return (
     <div className="relative p-10 w-[97.2%] rounded-xl bg-gray-200">
       <div>
@@ -51,14 +63,44 @@ const HeroSection = () => {
       <div className="flex mt-20">
         {courses.map((course) => (
           <CourseCard
+            routeLeftButton="/course/1"
             allLectures={course.allLectures}
             title={course.title}
             remainingLectures={course.remainingLectures}
             key={course.id}
             marginRight={course.id !== 3}
+            onOpenPopUp={() => openPopUp(course.title)} // Pass the course title to openPopUp
+            bgColor="customGray"
           />
         ))}
       </div>
+
+      {/* Pop-up Section */}
+      {showPopUp && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg p-6 w-[70%] h-[95vh] relative overflow-y-auto">
+            <button
+              onClick={closePopUp}
+              className="absolute top-4 right-4 text-5xl text-red-500"
+            >
+              &times;
+            </button>
+            <h2 className="text-3xl font-bold mb-4">{selectedCourseTitle}</h2>
+            <p className="text-lg mb-4">Course details go here...</p>
+            {/* Additional course content can be added here */}
+            
+            <div className="text-center mt-4">
+              <button
+                onClick={closePopUp}
+                className="bg-customGreen text-white px-6 py-2 rounded"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="text-center">
         <AppButton
           padding="10px 20px "

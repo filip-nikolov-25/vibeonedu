@@ -44,7 +44,7 @@ const PreviewCourseBeforeRegistration = ({ content }: LectureDisplayProps) => {
     };
 
     return page_content.map((page, index) => (
-      <div key={index} className="w-full flex justify-between items-start">
+      <div key={index} className="w-full z-30 flex justify-between items-start">
         <div className="w-[100%] h-full flex flex-col justify-start gap-y-4">
           <h1
             className={`text-[1rem] font-semibold w-full ${
@@ -74,7 +74,7 @@ const PreviewCourseBeforeRegistration = ({ content }: LectureDisplayProps) => {
   }
 
   return (
-    <div className="rounded-lg border-2 h-full w-full border-customOrange flex flex-col items-center justify-start">
+    <div className="rounded-lg z-50 border-2 h-full w-full border-customOrange flex flex-col items-center justify-start">
       <audio
         controls
         className="w-[95%] border-customOrange border-2 rounded-lg m-4"

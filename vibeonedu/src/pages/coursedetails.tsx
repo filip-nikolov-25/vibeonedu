@@ -5,25 +5,45 @@ import PinkSection from "@/components/CourseDetailPage/PinkSection";
 import SecondCourseOverviewSection from "@/components/CourseDetailPage/SecondCourseOverviewSection";
 import Footer from "@/components/Footer";
 import NavBar from "@/components/NavBar";
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 const Coursedetails = () => {
+  const [showPinkSection, setShowPinkSection] = useState(true); 
+  const [showNavBar, setShowNavBar] = useState(true); 
+  const [showOrangeSection, setShowOrangeSection] = useState(true); 
+
+  useEffect(() => {
+    if (!showPinkSection || !showNavBar) {
+      setShowOrangeSection(false); 
+    } else {
+      setShowOrangeSection(true); 
+    }
+  }, [showPinkSection, showNavBar]);
+
   return (
     <div className="mt-[-120px]">
-      <NavBar />
+      {showNavBar && <NavBar />}
       <HeroSection />
       <div className="mt-20 mb-20">
-        <CourseOverview />
+        <CourseOverview
+          setShowPinkSection={setShowPinkSection}
+          setShowNavBar={setShowNavBar}
+        />
       </div>
-      <PinkSection />
+      {showPinkSection && <PinkSection />} 
       <div className="mt-20 mb-20">
-        <SecondCourseOverviewSection />
+        <SecondCourseOverviewSection
+          setShowPinkSection={setShowPinkSection}
+          setShowNavBar={setShowNavBar}
+        />
       </div>
-      <StartYourCourseOrangeSection
-        bgColor="#ff6130"
-        showPicture={false}
-        buttonColor="#2870ed"
-      />
+      {showOrangeSection && (
+        <StartYourCourseOrangeSection
+          bgColor="#ff6130"
+          showPicture={false}
+          buttonColor="#2870ed"
+        />
+      )}
       <Footer />
     </div>
   );

@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 
 import NewNavBar from "@/components/NewNavBar";
 import SideBar from "@/components/SideBar";
-import Image from "next/image";
-import CourseCard from "@/components/base/CourseCard";
-import AppButton from "@/components/base/AppButton/AppButton";
+
+import { HeroProgress } from "@/components/CourseOverviewPage/HeroProgress";
+import { LessonList } from "@/components/CourseOverviewPage/LessonList";
+import { CourseInfo } from "@/components/CourseOverviewPage/CourseInfo";
+import CoursesCarousel from "@/components/base/ExistingUserPage/CoursesCarousel";
 
 const CourseOverview = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -40,54 +42,26 @@ const CourseOverview = () => {
   ];
 
   return (
-    <div className="relative">
-      <div className="">
-        <NewNavBar />
-      </div>
-      <div className="flex mt-10 z-30 relative">
-        <SideBar /> {/* Added sidebar */}
-        <div className="w-[70%] ml-[27.5%] relative p-10 bg-gray-200">
-          <div>
-            <h2 className="text-7xl w-[20%] mb-10">Добредојде, Томи!</h2>
-            <p className="text-5xl">Препорачано за тебе:</p>
+    <div>
+      <NewNavBar />
+      <div className="flex">
+        <div className="w-[20%]">
+          <SideBar />
+        </div>
+        <div className="w-[90%] mt-10">
+          <div className="w-[92%] mx-auto">
+            <HeroProgress />
           </div>
-          <div className="bg-customBlue p-7 rounded-xl text-white absolute top-5 right-[20%] w-[30%]">
-            <p>
-              Твојата финансиска иднина започнува тука! За почеток, избравме
-              курсеви според твоите интереси.
-            </p>
+          <div className="flex w-[92%] mt-10 mx-auto">
+            <LessonList />
+            <CourseInfo />
           </div>
-          <div className="h-5 w-5 bg-customBlue rounded-lg absolute top-5 right-[18%]"></div>
-          <div className="h-3 w-3 bg-customBlue rounded-lg top-12 absolute right-[17%]"></div>
-
-          <div className="absolute top-0 right-16">
-            <Image
-              src={"/images/dashBoardImgs/dashBoardHeroImage.png"}
-              width={209}
-              height={273}
-              alt="image"
+          <div className="w-[97%] ">
+            <CoursesCarousel
+              cardsToShow={3}
+              isThreeCardLayout
+              title="Повеќе од „Научи за себе.“"
             />
-          </div>
-
-          <div className="flex mt-20">
-            {courses.map((course) => (
-              <CourseCard
-                allLectures={course.allLectures}
-                title={course.title}
-                remainingLectures={course.remainingLectures}
-                key={course.id}
-                marginRight={course.id !== 3}
-              />
-            ))}
-          </div>
-          <div className="text-center">
-            <AppButton
-              padding="10px 20px"
-              backgroundColor="#ff6130"
-              margin="1.5rem 0"
-            >
-              Рагледај повеќе
-            </AppButton>
           </div>
         </div>
       </div>

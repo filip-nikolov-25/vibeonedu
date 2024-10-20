@@ -1,22 +1,31 @@
+import Link from "next/link";
+import React, { useState } from "react";
 import CourseCard from "@/components/base/CourseCard";
 import NewNavBar from "@/components/NewNavBar";
 import Badge from "@/components/ProfilePage/Badge";
 import Certificate from "@/components/ProfilePage/Certificate";
 import HeroSection from "@/components/ProfilePage/HeroSection";
 import SideBar from "@/components/SideBar";
-import { div } from "framer-motion/client";
 import Image from "next/image";
-import React, { useState } from "react";
+import PreviewCoursePopUp from "@/components/base/popup/PreviewCoursePopUp"; // Import the pop-up component
 
-const MyProfile = () => {
-  const [activeTab, setActiveTab] = useState<
-    "current" | "favorite" | "completed"
-  >("current"); // Default active tab
+const MyProfile: React.FC = () => {
+  const [activeTab, setActiveTab] = useState<"current" | "favorite" | "completed">("current");
+  const [showPopUp, setShowPopUp] = useState<boolean>(false); // State for controlling pop-up visibility
 
   // Function to handle tab clicks
   const handleTabClick = (tab: "current" | "favorite" | "completed") => {
     setActiveTab(tab);
   };
+
+  const openPopUp = () => {
+    setShowPopUp(true);
+  };
+
+  const closePopUp = () => {
+    setShowPopUp(false);
+  };
+
   const courses = [
     {
       title: "Лична финансиска гимнастика",
@@ -55,10 +64,10 @@ const MyProfile = () => {
               <div className="flex">
                 <div className="border-4 mr-5 rounded-xl border-customBlue">
                   <Image
-                    src={"/images/profilePic.jpg"}
-                    width={80} // You can change the size as needed
+                    src="/images/profilePic.jpg"
+                    width={80}
                     className="rounded-md"
-                    height={50} // Adjust this size as well
+                    height={50}
                     alt="profile-pic"
                   />
                 </div>
@@ -77,9 +86,7 @@ const MyProfile = () => {
           <div className="mt-10 flex border-2 rounded-lg w-[97%] border-customOrange">
             <div
               className={`text-center w-1/3 p-4 cursor-pointer ${
-                activeTab === "current"
-                  ? "bg-customOrange text-white font-bold"
-                  : ""
+                activeTab === "current" ? "bg-customOrange text-white font-bold" : ""
               }`}
               onClick={() => handleTabClick("current")}
             >
@@ -87,9 +94,7 @@ const MyProfile = () => {
             </div>
             <div
               className={`text-center w-1/3 p-4 cursor-pointer ${
-                activeTab === "favorite"
-                  ? "bg-customOrange text-white font-bold"
-                  : ""
+                activeTab === "favorite" ? "bg-customOrange text-white font-bold" : ""
               }`}
               onClick={() => handleTabClick("favorite")}
             >
@@ -97,9 +102,7 @@ const MyProfile = () => {
             </div>
             <div
               className={`text-center w-1/3 p-4 cursor-pointer ${
-                activeTab === "completed"
-                  ? "bg-customOrange text-white font-bold"
-                  : ""
+                activeTab === "completed" ? "bg-customOrange text-white font-bold" : ""
               }`}
               onClick={() => handleTabClick("completed")}
             >
@@ -108,18 +111,33 @@ const MyProfile = () => {
           </div>
 
           <div className="flex w-[98%] mt-10 gap-5">
-            {" "}
-            {/* Add gap property here */}
             {courses.map((course) => (
               <CourseCard
-                isHighlighted
+                bgColor="customGray"
                 allLectures={course.allLectures}
                 remainingLectures={course.remainingLectures}
                 title={course.title}
                 key={course.id}
+                onOpenPopUp={openPopUp} // Pass down the pop-up open function
               />
             ))}
           </div>
+
+          {/* Render the pop-up if showPopUp is true */}
+          {showPopUp && (
+            <div className="fixed inset-0 left-0 right-0 top-0 bg-black bg-opacity-50 flex items-center justify-center">
+              <div className="bg-white w-[70%] z-30 p-6 rounded-lg pt-20 h-[95vh] relative overflow-y-auto">
+                <button
+                  onClick={closePopUp}
+                  className="absolute top-[3.5%] right-[3.5%] text-5xl text-red-500"
+                >
+                  &times;
+                </button>
+                <PreviewCoursePopUp /> {/* Show the pop-up content */}
+              </div>
+            </div>
+          )}
+
           <div>
             <h2 className="text-4xl mt-5 font-bold">Сертификати</h2>
             <Certificate
@@ -141,15 +159,13 @@ const MyProfile = () => {
               />
               <Badge
                 imageSrc="/images/profilePageImgs/financeBadge.png"
-                badgeName="Капитален Архитект
-              "
+                badgeName="Капитален Архитект"
                 progress="ВО ПРОГРЕС"
                 marginRight={false}
               />
               <Badge
                 imageSrc="/images/profilePageImgs/financeBadge.png"
-                badgeName="Стратешки Визионер
-              "
+                badgeName="Стратешки Визионер"
                 progress="ВО ПРОГРЕС"
               />
               <Badge
