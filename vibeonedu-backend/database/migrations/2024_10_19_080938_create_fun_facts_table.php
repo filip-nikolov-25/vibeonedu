@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('fun_facts', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('author');
             $table->timestamps();
         });
     }
