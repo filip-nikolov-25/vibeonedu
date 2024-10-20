@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\UserInfo;
+use App\Models\UserCourse;
+use App\Models\UserBadge;
 use Dotenv\Validator;
 use Illuminate\Http\Request;
 
@@ -70,6 +72,33 @@ class UserController extends Controller
         return response()->json(["registrations" => $registrations]);
     }
 
+    public function userStats($id){
+
+        $finishedCourses = UserCourse::where('user_id', $id)->whereNotNull('started_at')->whereNotNull('completed_at')->count();
+        $unFinishedCourses = UserCourse::where('user_id', $id)->whereNull('completed_at')->whereNotNull('started_at')->count();
+        $userBadges = UserBadge::where('user_id', $id)->count();
+        $timeSpent = rand(1, 1000);
+        $neededCoursesForBadge = 0;
+        if($finishedCourses < 3){
+            $neededCoursesForBadge = 3 - $finishedCourses;
+        } else if ($finishedCourses < 7) {
+            $neededCoursesForBadge = 7 - $finishedCourses;
+        } else if ($finishedCourses < 10) {
+            $neededCoursesForBadge = 10 - $finishedCourses;
+        } else if ($finishedCourses < 13) {
+            $neededCoursesForBadge = 13 - $finishedCourses;
+        }
+
+        // dd($finishedCourses);
+        return response()->json(
+        [
+            'finishedCourses' => $finishedCourses,
+            'unFinishedCourses' => $unFinishedCourses,
+            'userBadges' => $userBadges,
+            'neededCoursesForBadge' => $neededCoursesForBadge,
+            'timeSpent' => $timeSpent
+        ]); 
+    }
 
    
 }
