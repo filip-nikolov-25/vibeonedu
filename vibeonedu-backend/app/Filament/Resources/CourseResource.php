@@ -5,10 +5,14 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\CourseResource\Pages;
 use App\Models\Course;
 use Filament\Forms;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Mail\Markdown;
 
 class CourseResource extends Resource
 {
@@ -22,7 +26,13 @@ class CourseResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Section::make()->schema([
+                    TextInput::make('name')
+                        ->label('Name'),
+                    Forms\Components\MarkdownEditor::make('description'),
+                    Select::make('module_id')
+                    ->relationship('module', 'name'),
+                ])
             ]);
     }
 
@@ -30,7 +40,10 @@ class CourseResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('name')
+                ->searchable(),
+                TextColumn::make('module.name')
+                ->label('Module'),
             ])
             ->filters([
                 //
