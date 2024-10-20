@@ -15,6 +15,7 @@ use App\Models\User;
 Route::get('/badges/{id}', [BadgeController::class, 'show']);
 Route::get('/userBadges/{id}', [UserBadgeController::class, 'index']);
 Route::get('/registrations/count', [UserController::class, 'userCount']);
+Route::post('/check-user/{email}', [UserController::class, 'checkUser']);
 
 
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
