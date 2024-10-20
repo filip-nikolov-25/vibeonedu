@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\CourseResource\RelationManagers;
 
+use App\Models\Lecture;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
@@ -51,7 +52,10 @@ class LecturesRelationManager extends RelationManager
                 Tables\Actions\CreateAction::make(),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\Action::make('edit')
+                    ->label('Edit')
+                    ->icon('heroicon-o-pencil')
+                    ->url(fn(Lecture $record) => route('filament.admin.resources.lectures.edit', $record->getKey())),
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
