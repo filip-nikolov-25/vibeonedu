@@ -28,7 +28,6 @@ const Home: React.FC<Props> = ({ funFacts }) => {
       <div className="pt-20 pb-20 w-[80%] mx-auto">
         <Carousel funFacts={funFacts} /> {/* Pass funFacts to Carousel if needed */}
       </div>
-      <Footer />
     </div>
   );
 };

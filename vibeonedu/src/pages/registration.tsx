@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 import { Step1 } from "@/components/Register/Step1";
 import { Step2 } from "@/components/Register/Step2";

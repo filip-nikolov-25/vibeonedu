@@ -9,10 +9,12 @@ interface Props {
   isHighlighted?: boolean;
   routeLeftButton?: string;
   routeRightButton?: string;
+
   onOpenPopUp: () => void; 
+
 }
 
-const CourseCard = ({
+const CourseCard: React.FC<Props> = ({
   allLectures,
   marginRight = true,
   remainingLectures,
@@ -55,7 +57,7 @@ const CourseCard = ({
       </div>
       <div className="flex items-center">
         <i className="fa-solid fa-clock mr-3 text-customGreen"></i>
-        <p>{marginRight}</p>
+        <p>{marginRight ? "Some time indicator" : ""}</p> {/* Adjust this if needed */}
       </div>
 
       <div className="mt-10 flex justify-between">

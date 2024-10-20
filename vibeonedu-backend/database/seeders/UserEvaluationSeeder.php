@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\UserEvaluation;
 
 class UserEvaluationSeeder extends Seeder
 {
@@ -12,6 +12,6 @@ class UserEvaluationSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        UserEvaluation::factory()->count(20)->create();  // Create 20 user evaluations
     }
 }
