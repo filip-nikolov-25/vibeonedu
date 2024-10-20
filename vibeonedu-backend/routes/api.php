@@ -38,3 +38,5 @@ Route::get('/businesscourses', [CourseController::class, 'businessCourses']);
 
 Route::get('/getuser/{id}', [\App\Http\Controllers\UserController::class, 'show']);
 //Route::post()
+
+Route::middleware('auth:sanctum')->post('/course/{courseId}/complete', [CourseController::class, 'completeCourse']);
