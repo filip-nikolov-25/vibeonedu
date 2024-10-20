@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class UserInfo extends Model
 {
     use HasFactory;
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+
+    public function city() {
+        return $this->belongsTo(City::class);
+    }
 }

@@ -54,11 +54,19 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Badge::class, 'user_badges');
     }
-  
+
     public function courses()
     {
         return $this->belongsToMany(Course::class, 'user_courses')
                     ->withPivot('started_at', 'completed_at');
 
+    }
+
+    public function role() {
+        return $this->belongsTo(Role::class);
+    }
+
+    public function userInfo() {
+        return $this->hasOne(UserInfo::class);
     }
 }
