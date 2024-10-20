@@ -3,6 +3,7 @@
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\FunFactController;
 use App\Http\Controllers\ModuleController;
+use App\Http\Controllers\CertificateController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -13,6 +14,7 @@ use App\Http\Controllers\UserController;
 use App\Models\User;
 
 Route::get('/badges/{id}', [BadgeController::class, 'show']); // Show a specific badge
+Route::get('/newCertificate/{userId}/{courseId}', [CertificateController::class, 'store']);
 Route::get('/userBadges/{id}', [UserBadgeController::class, 'index']); // Show all badges for a specific user
 Route::get('/registrations/count', [UserController::class, 'userCount']); // Show number of registrations
 Route::get('/users/{id}/stats', [UserController::class, 'userStats']); // Show stats for a specific user
