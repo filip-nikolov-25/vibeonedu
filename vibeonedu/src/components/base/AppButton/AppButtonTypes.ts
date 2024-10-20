@@ -6,6 +6,6 @@
     backgroundColor?: string;
     onClick?: () => void;
     children: React.ReactNode;
-    margin: string;
+    margin?: string;
   }
   

@@ -6,6 +6,7 @@ interface Props {
   remainingLectures: string;
   marginRight?: boolean;
   description?: string;
+  isHighlighted?: boolean; // New prop to change background color
 }
 
 const CourseCard = ({
@@ -13,13 +14,13 @@ const CourseCard = ({
   marginRight = true,
   remainingLectures,
   title,
-//   description,
+  isHighlighted = false, // Default value set to false
 }: Props) => {
   return (
     <div
-      className={`bg-white w-[33.333%] rounded-lg p-5 ${
-        marginRight && "mr-5"
-      } `}
+      className={`rounded-lg p-5 ${
+        isHighlighted ? "bg-customGray" : "bg-white"
+      } ${marginRight ? "mr-5" : ""}`}
     >
       <div className="flex mb-10">
         <i className="fa-solid fa-circle-check mr-5 text-gray-400 text-3xl"></i>
