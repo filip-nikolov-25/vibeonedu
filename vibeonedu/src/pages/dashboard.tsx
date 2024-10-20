@@ -1,4 +1,3 @@
-
 import ExistingUserPage from "@/components/base/ExistingUserPage/ExistingUserPage";
 import NewUserPage from "@/components/DashBoardPage/NewUserPage";
 
@@ -14,8 +13,8 @@ const dashboard = () => {
           <SideBar />
         </div>
         <div className=" w-[80%] ml-10 mt-10 ">
-          <ExistingUserPage />
-          {/* <NewUserPage /> */}
+          {/* <ExistingUserPage /> */}
+          <NewUserPage />/
         </div>
       </div>
     </div>
@@ -23,4 +22,3 @@ const dashboard = () => {
 };
 
 export default dashboard;
-

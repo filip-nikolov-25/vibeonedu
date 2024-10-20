@@ -1,28 +1,18 @@
 import React, { useState } from "react";
 import CourseCard from "../CourseCard";
 
-interface Course {
-  title: string;
-  allLectures: string;
-  remainingLectures: string;
-  averageLearningTime: string;
-  id: number;
-}
-
 interface Props {
   cardsToShow: number;
   isThreeCardLayout: boolean;
   title: string;
-  onOpenPopup: (courseTitle: string) => void; // Add this line
 }
 
 const CoursesCarousel: React.FC<Props> = ({
   cardsToShow,
   isThreeCardLayout,
   title,
-  onOpenPopup, // Add this line
 }) => {
-  const courses: Course[] = [
+  const courses = [
     {
       title: "Лична финансиска гимнастика",
       allLectures: "Вкупно лекции: 6",
@@ -120,8 +110,7 @@ const CoursesCarousel: React.FC<Props> = ({
                 marginRight={
                   index % (isThreeCardLayout ? 3 : 1) !==
                   (isThreeCardLayout ? 2 : 0)
-                }
-                onOpenPopUp={() => onOpenPopup(course.title)} // Pass the course title to the popup function
+                } // Adjust margin based on layout
               />
             ))}
         </div>

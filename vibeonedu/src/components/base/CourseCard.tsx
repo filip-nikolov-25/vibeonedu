@@ -9,10 +9,10 @@ interface Props {
   isHighlighted?: boolean;
   routeLeftButton?: string;
   routeRightButton?: string;
-  onOpenPopUp: () => void; // Prop for opening the pop-up
+  onOpenPopUp: () => void; 
 }
 
-const CourseCard: React.FC<Props> = ({
+const CourseCard = ({
   allLectures,
   marginRight = true,
   remainingLectures,
@@ -20,8 +20,8 @@ const CourseCard: React.FC<Props> = ({
   isHighlighted = false,
   routeLeftButton,
   routeRightButton,
-  onOpenPopUp,
-}) => {
+  onOpenPopUp 
+}: Props) => {
   return (
     <div
       className={`rounded-lg p-5 w-[30%] ${isHighlighted ? "bg-customGray" : "bg-white"} ${marginRight ? "mr-5" : ""}`}
@@ -55,7 +55,7 @@ const CourseCard: React.FC<Props> = ({
       </div>
       <div className="flex items-center">
         <i className="fa-solid fa-clock mr-3 text-customGreen"></i>
-        <p>{marginRight ? "Some time indicator" : ""}</p> {/* Adjust this if needed */}
+        <p>{marginRight}</p>
       </div>
 
       <div className="mt-10 flex justify-between">

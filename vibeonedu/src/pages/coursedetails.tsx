@@ -44,7 +44,6 @@ const Coursedetails = () => {
           buttonColor="#2870ed"
         />
       )}
-      <Footer />
     </div>
   );
 };

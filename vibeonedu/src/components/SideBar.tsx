@@ -31,9 +31,11 @@ const SideBar = () => {
 
   return (
     <div className="w-[20%] rounded-tr-xl rounded-br-xl mt-10 absolute left-0 p-10 bg-gray-100 mr-10 ">
+      <Link href={"/"}>
       <div className="flex w-full mb-10 justify-center">
         <Image src={"/images/logo.png"} width={63} height={100} alt="logo" />
       </div>
+      </Link>
       <div className="text-customBlue">
         <Link href={`/dashboard`}>
           <div
