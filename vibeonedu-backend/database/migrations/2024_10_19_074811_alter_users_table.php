@@ -13,6 +13,7 @@ return new class extends Migration {
         Schema::table('users', function (Blueprint $table) {
         // Add a foreign key referencing the roles table
             $table->foreignId('role_id')->default(1)->constrained()->onDelete('cascade');
+
         });
     }
 
