@@ -18,7 +18,6 @@ Route::get('/registrations/count', [UserController::class, 'userCount']); // Sho
 Route::get('/users/{id}/stats', [UserController::class, 'userStats']); // Show stats for a specific user
 Route::get('/course/{id}/lectures', [CourseController::class, 'courseLectures']); // Show number of lectures for a specific course
 
-
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
