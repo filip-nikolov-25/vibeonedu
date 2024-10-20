@@ -137,7 +137,6 @@ const SideBar = () => {
           <i className="fa-solid fa-circle-info text-xl text-gray-400"></i>
           <p className="ml-3">Фидбек</p>
         </div>
-        <Link href={"/"}>
           <div
             className="flex p-4 mb-5 rounded-xl cursor-pointer hover:bg-gray-200"
             onClick={handleLogout}
@@ -145,7 +144,6 @@ const SideBar = () => {
             <i className="fa-solid fa-right-from-bracket text-xl text-gray-400 "></i>
             <p className="ml-3">Одјави се </p>
           </div>
-        </Link>
       </div>
     </div>
   );

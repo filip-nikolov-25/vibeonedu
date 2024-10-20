@@ -15,7 +15,14 @@ export const Step2 = ({ setUser, user }: Props) => {
     e.preventDefault();
 
     // Validate all fields are filled
-    if (!user.sex || !user.city || !user.birthDate || !user.phoneNumber || !user.password || !user.passwordConfrimation) {
+    if (
+      !user.sex ||
+      !user.city ||
+      !user.birthDate ||
+      !user.phoneNumber ||
+      !user.password ||
+      !user.passwordConfrimation
+    ) {
       setError("Please fill out all fields");
       return;
     }
@@ -32,13 +39,16 @@ export const Step2 = ({ setUser, user }: Props) => {
 
     // Send user data to the API
     try {
-      const res = await fetch("https://c0b1-31-11-83-108.ngrok-free.app/api/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(user), // Send user data
-      });
+      const res = await fetch(
+        "https://c0b1-31-11-83-108.ngrok-free.app/api/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(user), // Send user data
+        }
+      );
 
       if (!res.ok) {
         throw new Error("Failed to register user");
@@ -51,7 +61,9 @@ export const Step2 = ({ setUser, user }: Props) => {
       // e.g., navigate to another page or show a success message
     } catch (error) {
       console.error("Error submitting form", error);
-      setError("An error occurred while submitting your data. Please try again.");
+      setError(
+        "An error occurred while submitting your data. Please try again."
+      );
     }
   };
 
@@ -80,44 +92,40 @@ export const Step2 = ({ setUser, user }: Props) => {
 
       <form className="w-full mb-16" onSubmit={handleSubmit}>
         <div className="mb-3">
-          {/* <input
+          <input
             type="text"
             id="sex"
-          //   onChange={(e) => setUser({ ...user, sex: e.target.value })}
+            //   onChange={(e) => setUser({ ...user, sex: e.target.value })}
             className="bg-white border text-sm rounded-lg focus:ring-customOrange focus:border-customOrange block w-full p-2.5 text-customOrange placeholder:text-customOrange"
             placeholder="Пол"
-            
-          /> */}
+          />
         </div>
         <div className="mb-3">
-          {/* <input
+          <input
             type="text"
             id="city"
-          //   onChange={(e) => setUser({ ...user, city: e.target.value })}
+            //   onChange={(e) => setUser({ ...user, city: e.target.value })}
             className="bg-white border text-sm rounded-lg focus:ring-customOrange focus:border-customOrange block w-full p-2.5 text-customOrange placeholder:text-customOrange"
             placeholder="Град"
-            
-          /> */}
+          />
         </div>
         <div className="mb-3">
-          {/* <input
+          <input
             type="date"
             id="birth_date"
-          //   onChange={(e) => setUser({ ...user, birthDate: e.target.value })}
+            //   onChange={(e) => setUser({ ...user, birthDate: e.target.value })}
             className="bg-white border text-sm rounded-lg focus:ring-customOrange focus:border-customOrange block w-full p-2.5 text-customOrange placeholder:text-customOrange"
             placeholder="Датум на раѓање"
-            
-          /> */}
+          />
         </div>
         <div className="mb-3">
-          {/* <input
+          <input
             type="text"
             id="phone_number"
-          //   onChange={(e) => setUser({ ...user, phoneNumber: e.target.value })}
+            //   onChange={(e) => setUser({ ...user, phoneNumber: e.target.value })}
             className="bg-white border text-sm rounded-lg focus:ring-customOrange focus:border-customOrange block w-full p-2.5 text-customOrange placeholder:text-customOrange"
             placeholder="Телефонски број"
-            
-          /> */}
+          />
         </div>
         <div className="mb-3">
           <input
@@ -126,21 +134,22 @@ export const Step2 = ({ setUser, user }: Props) => {
             onChange={(e) => setUser({ ...user, password: e.target.value })}
             className="bg-white border text-sm rounded-lg focus:ring-customOrange focus:border-customOrange block w-full p-2.5 text-customOrange placeholder:text-customOrange"
             placeholder="Лозинка"
-            
           />
         </div>
         <div className="mb-3">
           <input
             type="password"
             id="password_confirmation"
-            onChange={(e) => setUser({ ...user, passwordConfrimation: e.target.value })}
+            onChange={(e) =>
+              setUser({ ...user, passwordConfrimation: e.target.value })
+            }
             className="bg-white border text-sm rounded-lg focus:ring-customOrange focus:border-customOrange block w-full p-2.5 text-customOrange placeholder:text-customOrange"
             placeholder="Повтори лозинка"
-            
           />
         </div>
         <div className="mb-5 text-md">
-          <input type="radio" name="consent" id="consent" /> Поле за согласност за промотивен контакт.
+          <input type="radio" name="consent" id="consent" /> Поле за согласност
+          за промотивен контакт.
         </div>
 
         {/* Display error message if validation fails */}

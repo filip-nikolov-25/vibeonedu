@@ -61,11 +61,7 @@ const Registration = ({ registrationData }: Props) => {
       {/* {step === 5 && <Step5 />} */}
       {/* {step === 6 && <Step6 />} */}
 
-      {step === 2 && (
-        <button onClick={handleSubmit} className="mt-4 bg-blue-500 text-white p-2 rounded">
-          Submit Registration
-        </button>
-      )}
+  
     </div>
   );
 };
