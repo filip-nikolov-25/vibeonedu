@@ -17,4 +17,8 @@ class Course extends Model
     {
         return $this->belongsToMany(User::class, 'user_courses')->withPivot('started_at', 'completed_at');
     }
+
+    public function lectures() {
+        return $this->hasMany(Lecture::class);
+    }
 }

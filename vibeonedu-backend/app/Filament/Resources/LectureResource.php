@@ -2,11 +2,12 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\CourseResource\Pages;
-use App\Filament\Resources\CourseResource\RelationManagers\LecturesRelationManager;
-use App\Models\Course;
-use Filament\Actions\ViewAction;
+use App\Filament\Resources\LectureResource\Pages;
+use App\Filament\Resources\LectureResource\RelationManagers;
+use App\Filament\Resources\LectureResource\RelationManagers\MaterialRelationManager;
+use App\Models\Lecture;
 use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -14,15 +15,14 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Mail\Markdown;
 
-class CourseResource extends Resource
+class LectureResource extends Resource
 {
-    protected static ?string $model = Course::class;
+    protected static ?string $model = Lecture::class;
+
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-    protected static ?string $navigationLabel = 'Courses';
+
     protected static ?string $navigationGroup = 'Education';
-    protected static ?int $navigationSort = 1;
 
     public static function form(Form $form): Form
     {
@@ -31,15 +31,21 @@ class CourseResource extends Resource
                 Forms\Components\Section::make()->schema([
                     TextInput::make('name')
                         ->label('Name')
-                    ->required(),
+                        ->required(),
                     Forms\Components\MarkdownEditor::make('description')
-                    ->required(),
-                    Select::make('module_id')
-                    ->relationship('module', 'name')
-                    ->required()
-                    ->searchable()
-                    ->preload(),
-                ])
+                        ->required(),
+                    TextInput::make('duration')
+                        ->label('Duration (mins)')
+                        ->required()
+                        ->numeric(),
+                    FileUpload::make('audio_path')
+                        ->required(),
+                    Select::make('course_id')
+                        ->relationship('course', 'name')
+                        ->required()
+                        ->searchable()
+                        ->preload(),
+                ]),
             ]);
     }
 
@@ -47,24 +53,24 @@ class CourseResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('id'),
-                TextColumn::make('name')
+                TextColumn::make('id')->label('ID'),
+                TextColumn::make('name')->label('Name')
                 ->searchable(),
+                TextColumn::make('course.name')->label('Course'),
                 TextColumn::make('description')->label('Description')
                     ->toggleable(),
-                TextColumn::make('module.name')
-                ->label('Module'),
-            ])
-            ->filters([
-                //
+                TextColumn::make('duration')->label('Duration'),
+                TextColumn::make('audio_path')->label('Audio Path')
+                    ->toggleable(),
+                TextColumn::make('created_at')->label('Created At')
+                    ->toggleable(),
             ])
             ->actions([
                 Tables\Actions\ActionGroup::make([
                     Tables\Actions\ViewAction::make(),
                     Tables\Actions\EditAction::make(),
                     Tables\Actions\DeleteAction::make(),
-                ])
-
+                ]),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -76,16 +82,17 @@ class CourseResource extends Resource
     public static function getRelations(): array
     {
         return [
-            LecturesRelationManager::class,
+            MaterialRelationManager::class,
         ];
     }
+
 
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListCourses::route('/'),
-            'create' => Pages\CreateCourse::route('/create'),
-            'edit' => Pages\EditCourse::route('/{record}/edit'),
+            'index' => Pages\ListLectures::route('/'),
+            'create' => Pages\CreateLecture::route('/create'),
+            'edit' => Pages\EditLecture::route('/{record}/edit'),
         ];
     }
 }

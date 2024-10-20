@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\CourseResource\Pages;
+namespace App\Filament\Resources\MaterialResource\Pages;
 
-use App\Filament\Resources\CourseResource;
+use App\Filament\Resources\MaterialResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
-class EditCourse extends EditRecord
+class EditMaterial extends EditRecord
 {
-    protected static string $resource = CourseResource::class;
+    protected static string $resource = MaterialResource::class;
 
     protected function getHeaderActions(): array
     {
@@ -16,5 +16,4 @@ class EditCourse extends EditRecord
             Actions\DeleteAction::make(),
         ];
     }
-
 }
