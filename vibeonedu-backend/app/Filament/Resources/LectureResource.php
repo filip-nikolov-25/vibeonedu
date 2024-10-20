@@ -55,10 +55,11 @@ class LectureResource extends Resource
             ->columns([
                 TextColumn::make('id')->label('ID'),
                 TextColumn::make('name')->label('Name')
-                ->searchable(),
+                    ->searchable(),
                 TextColumn::make('course.name')->label('Course'),
                 TextColumn::make('description')->label('Description')
-                    ->toggleable(),
+                    ->toggleable()
+                    ->searchable(),
                 TextColumn::make('duration')->label('Duration'),
                 TextColumn::make('audio_path')->label('Audio Path')
                     ->toggleable(),
