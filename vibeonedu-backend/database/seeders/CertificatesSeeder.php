@@ -18,8 +18,8 @@ class CertificatesSeeder extends Seeder
         $courses = Course::all();
 
         foreach ($users as $user) {
-            foreach ($courses->random(3) as $course) {
-                Certificate::create([ 
+            foreach ($courses->random(1) as $course) {
+                Certificate::create([
                     'user_id' => $user->id,
                     'course_id' => $course->id,
                     'image_path' => 'certificates/sample_certificate_' . $user->id . '_' . $course->id . '.jpg',
