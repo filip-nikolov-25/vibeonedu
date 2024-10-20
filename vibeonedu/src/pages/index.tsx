@@ -5,7 +5,26 @@ import HeroSection from "@/components/homepage/HeroSection";
 import MainSection from "@/components/homepage/MainSection";
 import NavBar from "@/components/NavBar";
 
-export default function Home() {
+// interface FunFact {
+//   id: number;
+//   name: string;
+//   created_at: string;
+//   updated_at: string;
+// }
+
+// interface Props {
+//   funFacts: FunFact[];
+// }
+
+// const funFactsArr = [
+//   {
+//     id: 1,
+//     name: "„Финансиската слобода е достапна за оние кои учат за неа и работат за неа.",
+//     authot: "Роберт Киосаки",
+//   },
+// ];
+
+const Home: React.FC = () => {
   return (
     <div className="mt-[-120px]">
       <NavBar />
@@ -18,4 +37,8 @@ export default function Home() {
       <Footer />
     </div>
   );
-}
+};
+
+
+
+export default Home;

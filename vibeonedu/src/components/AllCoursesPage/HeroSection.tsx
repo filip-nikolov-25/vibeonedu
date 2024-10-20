@@ -1,7 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import CourseCard from "../base/CourseCard";
-import AppButton from "../base/AppButton/AppButton";
+
 
 const HeroSection = () => {
   const courses = [
@@ -9,8 +8,8 @@ const HeroSection = () => {
       title: "Лична финансиска гимнастика",
       allLectures: "Вкупно лекции: 6",
       remainingLectures: "Преостанати лекции: 0",
-      averageLearningTime:"Просечно време на читање ;3ч35мин",
-      id: 1
+      averageLearningTime: "Просечно време на читање ;3ч35мин",
+      id: 1,
     },
     {
       title: "Лична финансиска гимнастика",
@@ -28,13 +27,14 @@ const HeroSection = () => {
   return (
     <div className="relative p-10 w-[97.2%] rounded-xl bg-gray-200">
       <div>
-        <h2 className="text-7xl w-[20%] mb-10">Добредојде, Томи!</h2>
-        <p className="text-5xl">Препорачано за тебе:</p>
+        <h2 className="text-5xl font-bold w-[25%] mb-10">
+          Преглед на сите курсеви
+        </h2>
       </div>
       <div className="bg-customBlue p-7 rounded-xl text-white absolute top-5 right-[20%] w-[30%]">
         <p>
-          Твојата финансиска иднина започнува тука! За почеток, избравме курсеви
-          според твоите интереси.
+          Овде можеш да ги прегледаш сите достапни курсеви од модулите „Научи за
+          себе“ и „Научи за својот бизнис“
         </p>
       </div>
       <div className="h-5 w-5 bg-customBlue rounded-lg absolute top-5 right-[18%]"></div>
@@ -42,32 +42,18 @@ const HeroSection = () => {
 
       <div className="absolute top-5 right-16">
         <Image
-          src={"/images/dashBoardImgs/dashBoardHeroImage.png"}
-          width={209}
+          src={"/images/allCoursesImgs/heroSectionAllCourses.png"}
+          width={218}
           height={273}
           alt="image"
         />
       </div>
-      <div className="flex mt-20">
-        {courses.map((course) => (
-          <CourseCard
-            allLectures={course.allLectures}
-            title={course.title}
-            remainingLectures={course.remainingLectures}
-            key={course.id}
-            marginRight={course.id !== 3}
-          />
-        ))}
-      </div>
-      <div className="text-center">
-        <AppButton
-          padding="10px 20px "
-          backgroundColor="#ff6130"
-          margin="1.5rem 0"
-        >
-          Рагледај повеќе
-        </AppButton>
-      </div>
+      <p className="w-2/3 mt-24">
+        Секој курс вклучува лекции во текстуална форма или аудио верзија. По
+        завршувањето на секој курс, ќе добиеш сертификат за твоите постигнувања.
+        По изучувањето на курсот решаваш завршен тест со 10 прашања (кога си
+        подготвен/а) за да го комплетираш курсот и се стекнеш со сертификат.
+      </p>
     </div>
   );
 };

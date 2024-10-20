@@ -3,7 +3,7 @@ import React from "react";
 
 const NewNavBar = () => {
   return (
-    <div className="bg-customBlue">
+    <div className="bg-customBlue z-20 ">
       <div className="w-[90%] mx-auto flex pt-3 pb-3 relative justify-end ">
         <input
           type="text"
