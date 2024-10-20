@@ -3,18 +3,34 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Lecture;
 use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\UpdateCourseRequest;
 
 class CourseController extends Controller
 {
+
+    public function businessCourses() {
+        $businessCourses = Course::where('module_id', 2)->get();
+
+        return response()->json($businessCourses);
+    }
+
+    public function individualCourses() {
+        $individualCourses = Course::where('module_id', 1)->get();
+
+        return response()->json($individualCourses);
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return response()->json(Course::all());
+
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -37,7 +53,9 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        //
+        {
+            return response()->json($course->load('module'));
+        }
     }
 
     /**
@@ -63,4 +81,10 @@ class CourseController extends Controller
     {
         //
     }
+     public function courseLectures($courseId){
+
+        $numberOfLectures = Lecture::where('course_id', $courseId)->count();
+
+        return response()->json($numberOfLectures);
+     }
 }
