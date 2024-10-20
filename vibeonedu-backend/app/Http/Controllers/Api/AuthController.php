@@ -55,7 +55,7 @@ class AuthController extends Controller
         $user->save();
 
         // Use the existing token if available
-        $token = $user->createToken('YourAppName')->plainTextToken;
+        $token = $user->createToken('VibeOn')->plainTextToken;
 
         // Check if the user has any courses
         $courses = $user->courses;

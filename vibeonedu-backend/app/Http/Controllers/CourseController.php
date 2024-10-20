@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Lecture;
 use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\UpdateCourseRequest;
 
@@ -80,4 +81,10 @@ class CourseController extends Controller
     {
         //
     }
+     public function courseLectures($courseId){
+
+        $numberOfLectures = Lecture::where('course_id', $courseId)->count();
+
+        return response()->json($numberOfLectures);
+     }
 }

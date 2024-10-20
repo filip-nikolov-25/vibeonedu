@@ -2,9 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\UserLecture;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\UserLecture;
 
 class UserLectureSeeder extends Seeder
 {
@@ -13,6 +12,6 @@ class UserLectureSeeder extends Seeder
      */
     public function run(): void
     {
-        UserLecture::factory()->count(10)->create();
+        UserLecture::factory()->count(10)->create();  // Create 10 user lectures
     }
 }

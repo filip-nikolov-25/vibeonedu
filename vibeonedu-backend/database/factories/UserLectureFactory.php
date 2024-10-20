@@ -2,15 +2,18 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\UserLecture;
 use App\Models\Lecture;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\UserLecture>
  */
 class UserLectureFactory extends Factory
 {
+    protected $model = UserLecture::class; // Specify the model here
+
     /**
      * Define the model's default state.
      *
@@ -18,11 +21,9 @@ class UserLectureFactory extends Factory
      */
     public function definition(): array
     {
-        $user = User::all()->random();
-        $lecture = Lecture::all()->random();
         return [
-            'user_id' => $user->id,
-            'lecture_id' => $lecture->id,
+            'user_id' => User::inRandomOrder()->first()->id,  // More efficient
+            'lecture_id' => Lecture::inRandomOrder()->first()->id,  // More efficient
             'started_at' => now(),
             'completed_at' => now(),
         ];
