@@ -49,8 +49,10 @@ class MaterialResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('id')->label('ID'),
-                TextColumn::make('type')->label('Type'),
-                TextColumn::make('lecture.name')->label('Lecture name'),
+                TextColumn::make('type')->label('Type')
+                    ->searchable(),
+                TextColumn::make('lecture.name')->label('Lecture name')
+                    ->searchable(),
                 TextColumn::make('content')->label('Content')
                     ->toggleable(),
                 TextColumn::make('created_at')->label('Created At')
