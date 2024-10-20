@@ -77,7 +77,9 @@ const SecondCourseOverviewSection = ({ setShowPinkSection, setShowNavBar }) => {
             key={course.id}
             title={course.title}
             color={course.color}
-            marginRight={visibleCourses.length - 1 !== 2} // Update logic for margin
+
+            marginRight={true} // Update logic for margin
+
             handleButtonClick={openPopUp} // Pass the openPopUp handler
           />
         ))}

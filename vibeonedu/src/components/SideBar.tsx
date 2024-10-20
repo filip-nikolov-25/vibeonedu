@@ -31,9 +31,11 @@ const SideBar = () => {
 
   return (
     <div className="w-[20%] rounded-tr-xl rounded-br-xl mt-10 absolute left-0 p-10 bg-gray-100 mr-10 ">
+      <Link href={"/"}>
       <div className="flex w-full mb-10 justify-center">
         <Image src={"/images/logo.png"} width={63} height={100} alt="logo" />
       </div>
+      </Link>
       <div className="text-customBlue">
         <Link href={`/dashboard`}>
           <div
@@ -135,7 +137,7 @@ const SideBar = () => {
           <i className="fa-solid fa-circle-info text-xl text-gray-400"></i>
           <p className="ml-3">Фидбек</p>
         </div>
-        <Link href={"/"}>
+
           <div
             className="flex p-4 mb-5 rounded-xl cursor-pointer hover:bg-gray-200"
             onClick={handleLogout}
@@ -143,7 +145,7 @@ const SideBar = () => {
             <i className="fa-solid fa-right-from-bracket text-xl text-gray-400 "></i>
             <p className="ml-3">Одјави се </p>
           </div>
-        </Link>
+
       </div>
     </div>
   );
