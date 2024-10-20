@@ -34,6 +34,7 @@ class DatabaseSeeder extends Seeder
             LectureSeeder::class,
             UserLectureSeeder::class,
             UserInfoSeeder::class,
+            MaterialSeeder::class,
 
         ]);
 

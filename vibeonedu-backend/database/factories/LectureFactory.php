@@ -15,7 +15,6 @@ class LectureFactory extends Factory
 
 
         return [
-            'id' => $this->faker->unique()->randomNumber(),
             'course_id' => rand(1,3),
             'name' => $this->faker->sentence(),
             'description' => $this->faker->paragraph(),

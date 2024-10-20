@@ -22,7 +22,6 @@ class MaterialFactory extends Factory
         $lecture = Lecture::inRandomOrder()->first();
 
         return [
-            'id' => $this->faker->unique()->randomNumber(),
             'lecture_id' => $lecture->id,
             'type' => $this->faker->word(),
             'content' => $this->faker->paragraph(),
