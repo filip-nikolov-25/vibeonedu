@@ -21,12 +21,6 @@ export type LectureDisplayProps = {
   }[];
 };
 
-// const pageVariants = {
-//   1: "w-full h-full flex justify-between",
-//   2: "w-full h-1/2 flex justify-between",
-//   3: "w-full flex justify-between items-start",
-// };
-
 export default function LectureGrid({
   content,
 }: LectureDisplayProps): JSX.Element {
