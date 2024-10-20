@@ -12,10 +12,11 @@ use App\Http\Controllers\UserBadgeController;
 use App\Http\Controllers\UserController;
 use App\Models\User;
 
-Route::get('/badges/{id}', [BadgeController::class, 'show']);
-Route::get('/userBadges/{id}', [UserBadgeController::class, 'index']);
-Route::get('/registrations/count', [UserController::class, 'userCount']);
-Route::get('/users/{id}/stats', [UserController::class, 'userStats']);
+Route::get('/badges/{id}', [BadgeController::class, 'show']); // Show a specific badge
+Route::get('/userBadges/{id}', [UserBadgeController::class, 'index']); // Show all badges for a specific user
+Route::get('/registrations/count', [UserController::class, 'userCount']); // Show number of registrations
+Route::get('/users/{id}/stats', [UserController::class, 'userStats']); // Show stats for a specific user
+Route::get('/course/{id}/lectures', [CourseController::class, 'courseLectures']); // Show number of lectures for a specific course
 
 
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
