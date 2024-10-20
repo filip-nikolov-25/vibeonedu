@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use App\Models\UserCourse; // To track user course progress
-use App\Http\Requests\StoreCourseRequest;
-use App\Http\Requests\UpdateCourseRequest;
+use App\Models\UserLecture; // To track user lecture progress
+use App\Models\Lecture; // To track the lectures in a course
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request; // For handling requests
+use App\Http\Requests\StoreCourseRequest; // For validating the store request
+use App\Http\Requests\UpdateCourseRequest; 
 
 class CourseController extends Controller
 {
@@ -64,6 +67,35 @@ class CourseController extends Controller
         );
 
         return response()->json(['message' => 'Course marked as completed.']);
+    }
+
+    /**
+     * Get how many lectures are left for the user in the course.
+     */
+    public function getLecturesLeft($courseId)
+    {
+        $user = Auth::user(); // Get the logged-in user
+
+        // Get total lectures for the course
+        $totalLectures = Lecture::where('course_id', $courseId)->count();
+
+        // Get the number of lectures the user has completed for this course
+        $completedLectures = UserLecture::where('user_id', $user->id)
+            ->whereHas('lecture', function($query) use ($courseId) {
+                $query->where('course_id', $courseId);
+            })
+            ->whereNotNull('completed_at') // checking if the lecture has been completed
+            ->count();
+
+        // Calculate lectures left
+        $lecturesLeft = $totalLectures - $completedLectures;
+
+        // Return the result as JSON
+        return response()->json([
+            'total_lectures' => $totalLectures,
+            'completed_lectures' => $completedLectures,
+            'lectures_left' => $lecturesLeft
+        ]);
     }
 
     /**
