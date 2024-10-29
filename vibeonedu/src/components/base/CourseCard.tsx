@@ -9,7 +9,6 @@ interface Props {
   isHighlighted?: boolean;
   routeLeftButton?: string;
   routeRightButton?: string;
-
   onOpenPopUp: () => void; 
 
 }
@@ -20,7 +19,6 @@ const CourseCard: React.FC<Props> = ({
   remainingLectures,
   title,
   isHighlighted = false,
-  routeLeftButton,
   routeRightButton,
   onOpenPopUp 
 }: Props) => {

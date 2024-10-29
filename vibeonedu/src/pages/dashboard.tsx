@@ -5,6 +5,7 @@ import NewNavBar from "@/components/NewNavBar";
 import SideBar from "@/components/SideBar";
 
 const dashboard = () => {
+  const isExistingUser = true;
   return (
     <div>
       <NewNavBar />
@@ -13,8 +14,7 @@ const dashboard = () => {
           <SideBar />
         </div>
         <div className=" w-[80%] ml-10 mt-10 ">
-          {/* <ExistingUserPage /> */}
-          <NewUserPage />/
+          {isExistingUser ? <ExistingUserPage /> : <NewUserPage />}
         </div>
       </div>
     </div>

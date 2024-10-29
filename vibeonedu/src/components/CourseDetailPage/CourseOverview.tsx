@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import CourseOverviewCard from "../base/CourseOverviewCard";
 import PreviewCoursePopUp from "../base/popup/PreviewCoursePopUp";
+import Popup from "../PopupProps";
 
-const CourseOverview = ({ setShowPinkSection, setShowNavBar }) => {
+const CourseOverview = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [showPopUp, setShowPopUp] = useState(false);
 
   const courses = [
     { color: "#0cb43f", title: "Лична Финансиска Гимнастика", id: 1 },
@@ -28,29 +28,16 @@ const CourseOverview = ({ setShowPinkSection, setShowNavBar }) => {
       setCurrentIndex((prevIndex) => prevIndex - 1);
     }
   };
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
-  const openPopUp = () => {
-    setShowPopUp(true); // Show pop-up
-    setShowPinkSection(false); // Hide PinkSection
-    setShowNavBar(false); // Hide NavBar
+  const handleOpenPopup = () => {
+    setIsPopupOpen(true);
   };
 
-  const closePopUp = () => {
-    setShowPopUp(false); // Close pop-up
-    setShowPinkSection(true); // Show PinkSection
-    setShowNavBar(true); // Show NavBar
+  const handleClosePopup = () => {
+    setIsPopupOpen(false);
   };
 
-  useEffect(() => {
-    if (showPopUp) {
-      document.body.classList.add("overflow-hidden");
-    } else {
-      document.body.classList.remove("overflow-hidden");
-    }
-    return () => {
-      document.body.classList.remove("overflow-hidden");
-    };
-  }, [showPopUp]);
 
   return (
     <div className="w-[80%] relative mx-auto">
@@ -70,7 +57,8 @@ const CourseOverview = ({ setShowPinkSection, setShowNavBar }) => {
             }`}
             onClick={handleNext}
             style={{
-              cursor: currentIndex >= courses.length - 3 ? "not-allowed" : "pointer",
+              cursor:
+                currentIndex >= courses.length - 3 ? "not-allowed" : "pointer",
             }}
           ></i>
         </div>
@@ -82,13 +70,15 @@ const CourseOverview = ({ setShowPinkSection, setShowNavBar }) => {
             color={course.color}
             title={course.title}
             key={course.id}
-            marginRight={course.id !== visibleCourses[visibleCourses.length - 1].id}
-            handleButtonClick={openPopUp} // Pass the openPopUp handler to the card
+            marginRight={
+              course.id !== visibleCourses[visibleCourses.length - 1].id
+            }
+            handleButtonClick={handleOpenPopup} // Pass the openPopUp handler to the card
           />
         ))}
       </div>
 
-      {showPopUp && (
+      {/* {showPopUp && (
         <div className="fixed inset-0 left-0 right-0 top-[0%] bg-black bg-opacity-50 flex items-center justify-center">
           <div className="bg-white w-[70%] z-30 p-6 rounded-lg pt-20 h-[95vh] relative overflow-y-auto">
             <button
@@ -97,9 +87,14 @@ const CourseOverview = ({ setShowPinkSection, setShowNavBar }) => {
             >
               &times;
             </button>
-            <PreviewCoursePopUp /> {/* Show the pop-up content */}
+            <PreviewCoursePopUp /> 
           </div>
         </div>
+      )} */}
+      {isPopupOpen && (
+        <Popup isOpen={isPopupOpen} onClose={handleClosePopup}>
+          <PreviewCoursePopUp />
+        </Popup>
       )}
     </div>
   );

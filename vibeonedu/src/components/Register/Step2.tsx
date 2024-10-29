@@ -1,69 +1,34 @@
-import { useState } from "react";
-import { RegistrationUser } from "@/pages/registration";
 import Image from "next/image";
+import { RegistrationUser } from "@/types/types";
+import { useRef } from "react";
 
 interface Props {
   user: RegistrationUser;
   setUser: (user: RegistrationUser) => void;
+  pageCounter: number;
+  setPageCounter: (number: number) => void;
 }
 
-export const Step2 = ({ setUser, user }: Props) => {
-  const [error, setError] = useState<string>("");
+export const Step2 = ({ setUser, user,pageCounter,setPageCounter, }: Props) => {
+  const passwordRef = useRef<HTMLInputElement>(null);
+  const passwordConfrimationRef = useRef<HTMLInputElement>(null);
 
-  // Handle form submission
-  const handleSubmit = async (e: React.FormEvent) => {
+  //@ts-expect-error type Any
+
+  const handleSubmit = (e) => {
     e.preventDefault();
+    const password = passwordRef?.current?.value;
+    const passwordConfrimation = passwordConfrimationRef?.current?.value;
 
-    // Validate all fields are filled
-    if (
-      !user.sex ||
-      !user.city ||
-      !user.birthDate ||
-      !user.phoneNumber ||
-      !user.password ||
-      !user.passwordConfrimation
-    ) {
-      setError("Please fill out all fields");
-      return;
+    if(pageCounter <= 2) {
+      setPageCounter(pageCounter + 1)
     }
-
-    // Validate passwords match
-    if (user.password !== user.passwordConfrimation) {
-      setError("Passwords do not match");
-      return;
-    }
-
-    // If all validations pass, reset error and proceed
-    setError("");
-    setUser(user); // Save user data
-
-    // Send user data to the API
-    try {
-      const res = await fetch(
-        "https://c0b1-31-11-83-108.ngrok-free.app/api/register",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(user), // Send user data
-        }
-      );
-
-      if (!res.ok) {
-        throw new Error("Failed to register user");
-      }
-
-      const result = await res.json();
-      console.log("User data submitted:", result); // Log the response
-
-      // Handle successful registration here
-      // e.g., navigate to another page or show a success message
-    } catch (error) {
-      console.error("Error submitting form", error);
-      setError(
-        "An error occurred while submitting your data. Please try again."
-      );
+    if (password && passwordConfrimation) {
+      setUser({
+        ...user,
+        password: password,
+        passwordConfrimation: passwordConfrimation,
+      });
     }
   };
 
@@ -79,7 +44,7 @@ export const Step2 = ({ setUser, user }: Props) => {
       <div className="flex space-x-2 w-full mb-5">
         <div className="h-[10px] rounded bg-customOrange w-1/4"></div>
         <div className="h-[10px] rounded bg-customOrange w-1/4"></div>
-        <div className="h-[10px] rounded bg-customOrange w-1/4"></div>
+        <div className="h-[10px] rounded bg-customOrangeHover w-1/4"></div>
         <div className="h-[10px] rounded bg-customOrangeHover w-1/4"></div>
       </div>
 
@@ -95,7 +60,6 @@ export const Step2 = ({ setUser, user }: Props) => {
           <input
             type="text"
             id="sex"
-            //   onChange={(e) => setUser({ ...user, sex: e.target.value })}
             className="bg-white border text-sm rounded-lg focus:ring-customOrange focus:border-customOrange block w-full p-2.5 text-customOrange placeholder:text-customOrange"
             placeholder="Пол"
           />
@@ -104,7 +68,6 @@ export const Step2 = ({ setUser, user }: Props) => {
           <input
             type="text"
             id="city"
-            //   onChange={(e) => setUser({ ...user, city: e.target.value })}
             className="bg-white border text-sm rounded-lg focus:ring-customOrange focus:border-customOrange block w-full p-2.5 text-customOrange placeholder:text-customOrange"
             placeholder="Град"
           />
@@ -113,7 +76,6 @@ export const Step2 = ({ setUser, user }: Props) => {
           <input
             type="date"
             id="birth_date"
-            //   onChange={(e) => setUser({ ...user, birthDate: e.target.value })}
             className="bg-white border text-sm rounded-lg focus:ring-customOrange focus:border-customOrange block w-full p-2.5 text-customOrange placeholder:text-customOrange"
             placeholder="Датум на раѓање"
           />
@@ -122,7 +84,6 @@ export const Step2 = ({ setUser, user }: Props) => {
           <input
             type="text"
             id="phone_number"
-            //   onChange={(e) => setUser({ ...user, phoneNumber: e.target.value })}
             className="bg-white border text-sm rounded-lg focus:ring-customOrange focus:border-customOrange block w-full p-2.5 text-customOrange placeholder:text-customOrange"
             placeholder="Телефонски број"
           />
@@ -131,7 +92,7 @@ export const Step2 = ({ setUser, user }: Props) => {
           <input
             type="password"
             id="password"
-            onChange={(e) => setUser({ ...user, password: e.target.value })}
+            ref={passwordRef}
             className="bg-white border text-sm rounded-lg focus:ring-customOrange focus:border-customOrange block w-full p-2.5 text-customOrange placeholder:text-customOrange"
             placeholder="Лозинка"
           />
@@ -140,9 +101,7 @@ export const Step2 = ({ setUser, user }: Props) => {
           <input
             type="password"
             id="password_confirmation"
-            onChange={(e) =>
-              setUser({ ...user, passwordConfrimation: e.target.value })
-            }
+            ref={passwordConfrimationRef}
             className="bg-white border text-sm rounded-lg focus:ring-customOrange focus:border-customOrange block w-full p-2.5 text-customOrange placeholder:text-customOrange"
             placeholder="Повтори лозинка"
           />
@@ -152,14 +111,11 @@ export const Step2 = ({ setUser, user }: Props) => {
           за промотивен контакт.
         </div>
 
-        {/* Display error message if validation fails */}
-        {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
-
         <button
           type="submit"
           className="bg-customOrange text-white font-bold w-full rounded-lg py-3"
         >
-          SUBMIT
+          Продолжи
         </button>
       </form>
     </div>
