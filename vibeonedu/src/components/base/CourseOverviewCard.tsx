@@ -1,25 +1,24 @@
 import React from "react";
 import AppButton from "./AppButton/AppButton";
-import Link from "next/link";
 
 interface Props {
   marginRight: boolean;
   color: string;
   title: string;
   route?: string;
-  handleButtonClick: () => void;  // Add this new prop for handling button click
+  handleButtonClick: () => void; 
 }
 
 const CourseOverviewCard = ({
   marginRight,
   color,
   title,
-  route,
-  handleButtonClick, // Destructure the prop
+  handleButtonClick,
 }: Props) => {
   return (
     <div
-      className={`border-2 border-customDarkGreen w-[33.333%] ${
+    style={{borderColor:color}}
+      className={`border-2 w-[33.333%] ${
         marginRight && "mr-5"
       } p-5 rounded-xl`}
     >

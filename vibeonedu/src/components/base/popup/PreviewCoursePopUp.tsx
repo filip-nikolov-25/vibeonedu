@@ -4,7 +4,7 @@ import PreviewCourseBeforeRegistration from "./PreviewCourseBeforeRegistration";
 
 const PreviewCoursePopUp = () => {
   return (
-    <div className="p-6 z-30 w-full h-[80vh] flex flex-col">
+    <div className="p-6 z-30 w-full pt-10  flex flex-col-reverse">
       <div className="w-full z-[9999999]">{/* <WelcomeHeader /> */}</div>
 
       <div className="w-full z-30 h-3/4 pb-6">
@@ -75,7 +75,7 @@ const PreviewCoursePopUp = () => {
           ]}
         />
       </div>
-      <div className="flex justify-between relative rounded-lg pl-16 pr-16 pt-10 pb-10 bg-[#2870ED]">
+      <div className="flex justify-between mb-10  relative rounded-lg pl-16 pr-16 pt-10 pb-10 bg-[#2870ED]">
         <div className=" text-white w-[50%] my-auto">
           <p className="text-xl">Лука и Ана ти посакуваат</p>
           <p className="text-4xl font-bold mb-4 mt-7">Добредојде на </p>

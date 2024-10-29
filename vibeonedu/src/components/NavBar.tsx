@@ -26,7 +26,7 @@ const NavBar = () => {
           <li>Контакт</li>
         </ul>
         <div>
-          <Link href={"/registration"}>
+          <Link href={"/register"}>
             <AppButton
               margin="0 1rem 0 0 "
               padding="6px 20px"
