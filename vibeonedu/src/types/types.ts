@@ -17,5 +17,5 @@ export interface Course {
     surname: string | undefined;
     email: string | undefined;
     password: string | undefined;
-    passwordConfrimation: string | undefined;
+    password_confirmation: string | undefined;
   }
