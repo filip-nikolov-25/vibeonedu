@@ -1,6 +1,11 @@
 import Image from "next/image"
 
-export const Step5 = () => {
+interface Props {
+     pageCounter: number;
+     setPageCounter: (number: number) => void;
+   }
+
+export const Step5 = ({pageCounter,setPageCounter}:Props) => {
      return (
           <div className="flex flex-col items-center lg:w-[20%] text-center text-white">
                <Image
@@ -41,7 +46,7 @@ export const Step5 = () => {
                                    <span className="ml-2">1 час</span>
                          </label>
                     </div>
-                    <button className="bg-customOrange text-white font-bold w-full rounded-lg py-3">
+                    <button onClick={() => setPageCounter(pageCounter + 1)} className="bg-customOrange text-white font-bold w-full rounded-lg py-3">
                          Најави се
                     </button>
                </form>

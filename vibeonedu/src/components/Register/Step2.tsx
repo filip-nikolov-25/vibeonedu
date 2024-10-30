@@ -9,7 +9,12 @@ interface Props {
   setPageCounter: (number: number) => void;
 }
 
-export const Step2 = ({ setUser, user,pageCounter,setPageCounter, }: Props) => {
+export const Step2 = ({
+  setUser,
+  user,
+  pageCounter,
+  setPageCounter,
+}: Props) => {
   const passwordRef = useRef<HTMLInputElement>(null);
   const passwordConfrimationRef = useRef<HTMLInputElement>(null);
 
@@ -17,18 +22,19 @@ export const Step2 = ({ setUser, user,pageCounter,setPageCounter, }: Props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const password = passwordRef?.current?.value;
-    const passwordConfrimation = passwordConfrimationRef?.current?.value;
+    const password = passwordRef.current?.value;
+    const passwordConfirmation = passwordConfrimationRef.current?.value;
 
-    if(pageCounter <= 2) {
-      setPageCounter(pageCounter + 1)
-    }
-    if (password && passwordConfrimation) {
+    if (password && passwordConfirmation) {
       setUser({
         ...user,
         password: password,
-        passwordConfrimation: passwordConfrimation,
+        password_confirmation: passwordConfirmation,
       });
+    }
+
+    if (pageCounter <= 2) {
+      setPageCounter(pageCounter + 1);
     }
   };
 

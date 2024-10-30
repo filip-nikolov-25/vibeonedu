@@ -1,5 +1,3 @@
-"use client"; // Ensure this file can use client-side features
-import Link from "next/link";
 import React, { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -11,46 +9,53 @@ const SignIn = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const router = useRouter();
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const apiUrl = "https://98e3-31-11-74-166.ngrok-free.app/api/login";
+    const apiUrl = "https://23bd-46-217-162-210.ngrok-free.app/api/login";
 
     if (!email || !password) {
       setError("Please fill out all fields");
       return;
     }
 
-    setError("");
-    setLoading(true); // Set loading to true before API call
-
-    try {
-      const response = await fetch(apiUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          "ngrok-skip-browser-warning": "true", // Include if needed
-        },
-        body: JSON.stringify({ email, password }),
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        localStorage.setItem("userId", data.id); // Store user ID
-
-        // Redirect to the desired page
-        router.push("/existingUser");
-      } else {
-        // Handle errors
-        console.error("Error during login:", response);
-        setError("An error occurred while logging in. Please try again.");
-      }
-    } catch (error) {
-      console.error("Error during login:", error);
-      setError("An error occurred while logging in. Please try again.");
-    } finally {
-      setLoading(false); // Reset loading state
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setError("Please enter a valid email address");
+      return;
     }
+
+    setError("");
+    setLoading(true);
+
+    fetch(apiUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    })
+      .then((response) => {
+        setLoading(false);
+
+        if (!response.ok) {
+          return response.json().then((errorData) => {
+            setError(
+              errorData.message ||
+                "An error occurred during login. Please try again."
+            );
+          });
+        }
+
+        return response.json().then((data) => {
+          localStorage.setItem("userId", data.id);
+          router.push("/dashboard");
+        });
+      })
+      .catch(() => {
+        setLoading(false);
+        setError("An error occurred during login. Please try again.");
+      });
   };
 
   return (
@@ -97,15 +102,13 @@ const SignIn = () => {
             />
           </div>
           {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
-          <Link href={"/dashboard"}>
-            <button
-              type="submit"
-              className="bg-customOrange text-white font-bold w-full rounded-lg py-3"
-              disabled={loading} // Disable button while loading
-            >
-              {loading ? "Најавување..." : "Најави се"}
-            </button>
-          </Link>
+          <button
+            type="submit"
+            className="bg-customOrange text-white font-bold w-full rounded-lg py-3"
+            disabled={loading}
+          >
+            {loading ? "Најавување..." : "Најави се"}
+          </button>
         </form>
         <p className="mb-5 text-xl">Или</p>
         <div className="flex flex-row mb-5">
